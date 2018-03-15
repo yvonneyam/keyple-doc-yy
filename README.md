@@ -1,2 +1,1 @@
-# doc
-[[test]]
+Please go to the [wiki](/wiki).
