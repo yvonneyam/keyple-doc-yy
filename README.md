@@ -1,1 +1,1 @@
-Please go to the [wiki](/wiki).
+Please go to the [wiki](https://github.com/calypsonet/doc/wiki).
