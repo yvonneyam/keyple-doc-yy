@@ -3,8 +3,8 @@
 - **Week #22**:
   - Finished a wide refactoring of the SE Proxy layer to requests for multi-SE.
   - Two PC Java examples are fully ready for the PC/SC plugin:
-    - KeypleGenericDemo_ObservableReaderNotification ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example-pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_ObservableReaderNotification.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example-pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_ObservableReaderNotification.java) ) ==> to observe the readers' configuration & SEs' status on a PC (notification of reader hot-plug/unplug, notification of SE insertion/removal).
-    - KeypleGenericDemo_SeProtocolDetection ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example-pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_SeProtocolDetection.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example-pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_SeProtocolDetection.java) ) ==> to detect the kind of SE presented on a contactless reader.
+    - KeypleGenericDemo_ObservableReaderNotification ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-examples/pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_ObservableReaderNotification.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-examples/pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_ObservableReaderNotification.java) ) ==> to observe the readers' configuration & SEs' status on a PC (notification of reader hot-plug/unplug, notification of SE insertion/removal).
+    - KeypleGenericDemo_SeProtocolDetection ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-examples/pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_SeProtocolDetection.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-examples/pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleGenericDemo_SeProtocolDetection.java) ) ==> to detect the kind of SE presented on a contactless reader.
 
 - **Week #23**:
   - Update of the Calypso Secured Session (org.eclipse.keyple.calypso.transaction.PoSecureSession) in order to support the new multi-SE request feature.
@@ -24,8 +24,8 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
 ### JavaDoc{s}
 - **'Keyple Core module' JavaDoc**: [https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/)
  - **'Keyple Calypso Library JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/)
- - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin-pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin-pcsc/javadoc/)
-- **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin-stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin-stub/javadoc/)
+ - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugins/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugins/pcsc/javadoc/)
+- **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugins/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugins/stub/javadoc/)
 
 For the moment, the JavaDocs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks. Pending, developers have the possibility to generate them by themselves from the keyple-java repository.
  
@@ -39,4 +39,4 @@ For the moment, the JavaDocs of the two Android plugins (NFC reader & OMAPI) are
 For the moment, the JARs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks.
 
 Fat archive:
-- **'FAT JAR of PC examples with dependencies'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-1.0-SNAPSHOT.jar)
+- **'FAT JAR of PC examples with dependencies'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-examples-pc-fat-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-examples-pc-fat-1.0-SNAPSHOT.jar)
