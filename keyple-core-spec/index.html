@@ -432,45 +432,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#true-secure-element-proxy-api">2. 'Secure Element Proxy' API</a>
 <ul class="sectlevel2">
 <li><a href="#truefunctional-processing">2.1. Functional processing</a></li>
-<li><a href="#truese-proxy-apdu-command-transmission-supported-by-all-plugins">2.2. SE Proxy - APDU command transmission (supported by all plugins)</a>
-<ul class="sectlevel3">
-<li><a href="#truefinal-class-seproxyservice">2.2.1. final Class: SeProxyService</a></li>
-<li><a href="#trueinterface-or-abstract-class-readersplugin">2.2.2. Interface (or abstract Class): ReadersPlugin</a></li>
-<li><a href="#trueinterface-or-abstract-class-proxyreader">2.2.3. Interface (or abstract Class): ProxyReader</a></li>
-<li><a href="#trueclass-channelstatereaderexception">2.2.4. Class: ChannelStateReaderException</a></li>
-<li><a href="#trueclass-invalidapdureaderexception">2.2.5. Class: InvalidApduReaderException</a></li>
-<li><a href="#trueclass-ioreaderexception">2.2.6. Class: IOReaderException</a></li>
-<li><a href="#trueclass-timeoutreaderexception">2.2.7. Class: TimeoutReaderException</a></li>
-<li><a href="#trueclass-unexpectedreaderexception">2.2.8. Class: UnexpectedReaderException</a></li>
-<li><a href="#trueclass-serequest">2.2.9. Class: SeRequest</a></li>
-<li><a href="#trueclass-applicationrequest">2.2.10. Class: ApplicationRequest</a></li>
-<li><a href="#trueclass-seresponse">2.2.11. Class: SeResponse</a></li>
-<li><a href="#trueclass-apdurequest">2.2.12. Class: ApduRequest</a></li>
-<li><a href="#trueclass-apduresponse">2.2.13. Class: ApduResponse</a></li>
+<li><a href="#truese-proxy-api-for-terminal-application-implementation">2.2. SE Proxy API - for terminal application implementation</a></li>
 </ul>
 </li>
-<li><a href="#truese-proxy-readers-settings-configurable-observable-options-for-plugins">2.3. SE Proxy - Readers' settings (configurable &amp; observable options for plugins)</a>
-<ul class="sectlevel3">
-<li><a href="#trueabstract-class-observablereader">2.3.1. abstract Class: ObservableReader</a></li>
-<li><a href="#trueabstract-class-notifierreader">2.3.2. abstract Class: NotifierReader</a></li>
-<li><a href="#trueclass-readerevent">2.3.3. Class: ReaderEvent</a></li>
-<li><a href="#trueinterface-or-abstract-class-readerobserver">2.3.4. Interface (or abstract Class): ReaderObserver</a></li>
-<li><a href="#trueinterface-or-abstract-class-configurablereader">2.3.5. Interface (or abstract Class): ConfigurableReader</a></li>
-<li><a href="#trueclass-wrongparameterkeyexception">2.3.6. Class: WrongParameterKeyException</a></li>
-<li><a href="#trueclass-inconsistentparametervalueexception">2.3.7. Class: InconsistentParameterValueException</a></li>
-<li><a href="#trueclass-parameterprocessingerrorexception">2.3.8. Class: ParameterProcessingErrorException</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#true-generic-command-api">3. 'Generic Command' API</a>
+<li><a href="#trueaccess-to-configurable-se-readers">3. Access to configurable SE readers</a></li>
+<li><a href="#trueapdu-command-transmission">4. APDU command transmission</a></li>
+<li><a href="#truenotification-of-plugin-reader-events">5. Notification of plugin &amp; reader events</a>
 <ul class="sectlevel2">
-<li><a href="#trueinterface-commandstable">3.1. Interface: CommandsTable</a></li>
-<li><a href="#trueabstract-class-apducommandbuilder">3.2. abstract Class: ApduCommandBuilder</a></li>
-<li><a href="#trueabstract-class-apduresponseparser">3.3. abstract Class: ApduResponseParser</a></li>
+<li><a href="#truese-proxy-api-for-terminal-application-implementation-2">5.1. SE Proxy API - for terminal application implementation</a></li>
 </ul>
 </li>
-<li><a href="#true-remote-se-api">4. 'Remote SE' API</a></li>
+<li><a href="#true-generic-command-api">6. 'Generic Command' API</a>
+<ul class="sectlevel2">
+<li><a href="#trueinterface-commandstable">6.1. Interface: CommandsTable</a></li>
+<li><a href="#trueabstract-class-apducommandbuilder">6.2. abstract Class: ApduCommandBuilder</a></li>
+<li><a href="#trueabstract-class-apduresponseparser">6.3. abstract Class: ApduResponseParser</a></li>
+</ul>
+</li>
+<li><a href="#true-remote-se-service">7. 'Remote SE' service</a></li>
 </ul>
 </div>
 </div>
@@ -573,6 +552,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
+<div class="title">Support of old Calypso products not compliant with ISO 7816-4 for ‘case 4’ APDU in contacts mode:</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Calypso Revision 2.4 Portable Objects and ‘S1Dx’ SAM replies on a case 4 APDU in contacts mode the successful status 9000h instead of 61XYh → in this case the Reader Plugin wouldn’t be able to automatically request a GetResponse command for a length XYh.</p>
+</li>
+<li>
+<p>To recover this, case 4 APDU could be highlighted with this ‘case 4’ flag: then in case of missing data in the response with a successful status, the plugin will have to request a GetResponse for a length 00h.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
 <div class="title">Plugins’ rules:</div>
 <div class="ulist">
 <ul>
@@ -609,1014 +610,204 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="truese-proxy-apdu-command-transmission-supported-by-all-plugins"><a class="anchor" href="#truese-proxy-apdu-command-transmission-supported-by-all-plugins"></a>2.2. SE Proxy - APDU command transmission (supported by all plugins)</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Interface to access SE readers (though reader&#8217;s plugins):</p>
-</li>
-</ul>
+<h3 id="truese-proxy-api-for-terminal-application-implementation"><a class="anchor" href="#truese-proxy-api-for-terminal-application-implementation"></a>2.2. SE Proxy API - for terminal application implementation</h3>
+
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trueaccess-to-configurable-se-readers"><a class="anchor" href="#trueaccess-to-configurable-se-readers"></a>3. Access to configurable SE readers</h2>
+<div class="sectionbody">
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-AccessReader.svg" alt="uml classDiagram seProxy AccessReader.svg">
 </div>
 </div>
+<div class="paragraph">
+<p>The SE Proxy Service singleton is the <strong>entry point of the SE Proxy Service</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Interface to transmit APDU command through a SE readers:</p>
+<p>its instance has to be &lt;b&gt;called by a ticketing application&lt;b/&gt; in order to establish a link with a SE’s readers.</p>
+</li>
+<li>
+<p>Different specific reader plugins could be set to the SE Proxy Service: each reader plugin is defined with a unique name.</p>
+</li>
+<li>
+<p>On the SE Proxy Service the list of Reader Plugins currently set could be recovered sort by plugin name.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>ReadersPlugin is the generic interface to manage drivers of SE reader (PC/SC, NFC Android, &#8230;&#8203;):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For a specific reader plugin, different SE readers could be available: each reader of a plugin is defined with a unique name.</p>
+</li>
+<li>
+<p>The list of available SE readers could be recovered sort by reader name.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ProxyReader is the generic interface to manage SE readers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A SE reader provides the possibility to check is a SE is present in the reader.</p>
+</li>
+<li>
+<p>By defining some specific SE protocols' settings, we could configure a reader to recognize the communication protocol (contacts: ISO 7816-3, contactless: ISO 14443-4, B', Mifare, &#8230;&#8203;) of the targeted SE.</p>
+</li>
+<li>
+<p>Some set of SE requests, containing APDU commands to operate, could be transmit to reader, in order to get the corresponding response, according to SE present in the reader.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Plugins &amp; SE readers could require the setting of specific parameters.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trueapdu-command-transmission"><a class="anchor" href="#trueapdu-command-transmission"></a>4. APDU command transmission</h2>
+<div class="sectionbody">
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-TransmitApdu.svg" alt="uml classDiagram seProxy TransmitApdu.svg">
 </div>
 </div>
-<div class="sect3">
-<h4 id="truefinal-class-seproxyservice"><a class="anchor" href="#truefinal-class-seproxyservice"></a>2.2.1. final Class: SeProxyService</h4>
 <div class="paragraph">
-<p>This <strong>final</strong> class is a singleton, the <strong>entry point of the SE Proxy Service</strong>, its instance has to be &lt;b&gt;called by a ticketing application&lt;b/&gt; in order to establish a link with a SE’s application.</p>
+<p>A SE Request aggregates the elements to open a logical channel with a SE and select a SE application, and group of APDU to exchange with the selected application.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>static</strong> private Attribute: SeProxyService uniqueInstance</p>
-<div class="ulist">
-<ul>
+<p>When defining an optional protocol flag to a SE Request, the reader will try to operate the request only if the SE communication protocol matches the flag.</p>
+</li>
 <li>
-<p>singleton’s instance of SeProxyService</p>
+<p>For SE application requiring an explicit selection: an AID should be defined in the SE Request, in this case the reader build and transmit the right Select Application.</p>
+</li>
+<li>
+<p>The grouping of APDU command requests in a SE request allows to optimize the network messages in case the reader is remote to the terminal.</p>
+</li>
+<li>
+<p>After the processing of a SE Request a reader automatically close the logical channel with the SE application: except if the SE request explicitly ask to keep it open.</p>
 </li>
 </ul>
-</div>
-</li>
-<li>
-<p>private Attribute: Integer version</p>
-<div class="ulist">
-<ul>
-<li>
-<p>version number of the SE Proxy Service API</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: ReadersPlugin[0..*] plugins</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the list of readers’ plugins interfaced with the SE Proxy Service</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Method: SeProxyService()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the singleton constructor</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>static</strong> Method: SeProxyService getInstance()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the singleton instance.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: Integer getVersion()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the version number of the SE Proxy Service API.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: setPlugins(ReadersPlugin[1..*] plugins)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>add readers’ plugins to the service</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ReadersPlugin[0..*] getPlugins()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the list of interfaced reader’s plugins.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueinterface-or-abstract-class-readersplugin"><a class="anchor" href="#trueinterface-or-abstract-class-readersplugin"></a>2.2.2. Interface (or abstract Class): ReadersPlugin</h4>
-<div class="paragraph">
-<p>This object could be defined as an interface in Java, or as an abstract class in C++.</p>
 </div>
 <div class="paragraph">
-<p>This interface (or abstract class) has to be implemented (extended) by each plugins of readers’ drivers.
-* Abstract method: String getName()
-** returns the ‘unique’ name of the readers’ plugin.</p>
+<p>A terminal could accept on a reader several kinds of SE applications: those applications could be selected through different AID and could be based on different SE protocol.
+Depending on the kind of SE applications set as supported on a reader: the transmission of a set of SE requests could be requested.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Abstract method: ProxyReader[0..*] getReaders()</p>
+<p>The SE requests of a set are processed sequentially.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>returns the list of available connected SE readers for the selected plugin.</p>
+<p>If the protocol flag of a SE request matches the SE protocols defined for the reader, then the reader tries to open a logical channel.</p>
+</li>
+<li>
+<p>A non-matching SE request is skipped.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For a specific SE request, if a logical is opened, the included APDU commands are transmitted to the selected application.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In case the SE request is defined to keep the logical channel open, the processing of the SE request set stops even if there are remaining SE requests with SE protocol flags matching the reader setting.</p>
+</li>
+<li>
+<p>Otherwise, if the logical channel could be closed after the APDU transmission:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The reader processes the next pending SE request matching the reader protocol settings.</p>
+</li>
+<li>
+<p>If there is no more SE request to process, and no logical channel to maintain, then the reader could finally close the physical channel with the SE.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</li>
+</ul>
 </div>
-<div class="sect3">
-<h4 id="trueinterface-or-abstract-class-proxyreader"><a class="anchor" href="#trueinterface-or-abstract-class-proxyreader"></a>2.2.3. Interface (or abstract Class): ProxyReader</h4>
 <div class="paragraph">
-<p>This interface (or abstract class) has to be &lt;b&gt;implemented (extended) by each plugins of readers’ drivers&lt;b/&gt;.
-* Abstract method: String getName()
-** returns the ‘unique’ name of the SE reader for the selected plugin.</p>
+<p>By defining an APDU request with a 'case 4' flag, in case SE application doesn&#8217;t reply data: the reader is in charge to transmit a Get Response in order to recover the response. This 'hack' allows to support SE not fully compliant with ISO 7816-4 for case 4 APDU commands (e.g. as for the first generation of Calypso revision 1 native SE).
+For an APDU request, the optional setting of successful status code other that 0x9000 allows the reader to identify is a corresponding APDU response is successful.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Abstract method: SeResponse transmit(SeRequest seApplicationRequest) throw ChannelStateReaderException, InvalidApduReaderException, IOReaderException, TimeoutReaderException, UnexpectedReaderException</p>
-<div class="ulist">
-<ul>
-<li>
-<p>transmits a request to a SE application and get back the corresponding SE response</p>
-</li>
-<li>
-<p>the usage of this method is conditioned to the presence of a SE in the selected reader, this method would fail if the SE is missing, or in case of IO communication error with the reader or the SE, if the APDU format isn’t recognize by the reader, or in case of timeout for a remote reader.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Reader’s plugins’ implementations have to throw the specific exceptions defined by the SDK: ChannelStateReaderException, InvalidApduReaderException, IOReaderException, TimeoutReaderException if managed by the reader, otherwise UnexpectedReaderException (for example in case of security access error…).</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Abstract method: Boolean isSePresent()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns true if a Secure Element is present in the reader</p>
-</li>
-<li>
-<p>a useful method for “local” readers, maybe for “remote readers” the response could always be implicitly “true”.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-channelstatereaderexception"><a class="anchor" href="#trueclass-channelstatereaderexception"></a>2.2.4. Class: ChannelStateReaderException</h4>
 <div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-invalidapdureaderexception"><a class="anchor" href="#trueclass-invalidapdureaderexception"></a>2.2.5. Class: InvalidApduReaderException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-ioreaderexception"><a class="anchor" href="#trueclass-ioreaderexception"></a>2.2.6. Class: IOReaderException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-timeoutreaderexception"><a class="anchor" href="#trueclass-timeoutreaderexception"></a>2.2.7. Class: TimeoutReaderException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-unexpectedreaderexception"><a class="anchor" href="#trueclass-unexpectedreaderexception"></a>2.2.8. Class: UnexpectedReaderException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-serequest"><a class="anchor" href="#trueclass-serequest"></a>2.2.9. Class: SeRequest</h4>
-<div class="paragraph">
-<p>This class aggregates the elements of a request to a local or remote SE Reader, sent through a ProxyReader, in order to open a logical channel with a SE application to select, and to transfer a group of APDU commands to run.</p>
+<p>In a SE response, at least one between the ATR field &amp; the FCI should be non-null:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Allows to open a logical channel with an application, to transfer a group of APDU command requests, and defining the final status of the logical channel (open or closed).</p>
+<p>A SE application explicitly selected with an AID may provide FCI data.</p>
 </li>
 <li>
-<p>Returns the previous status of the logical channel and get a group of APDU command responses.
-Dedicated methods to open or close a channel are useless!</p>
-</li>
-<li>
-<p>private Attribute: ByteArray aidToSelect[0..1]</p>
-<div class="ulist">
-<ul>
-<li>
-<p>AID’s bytes of the SE application to select. In case the SE application is currently not selected, a logical channel is established, and the corresponding SE application is selected by the SE reader, otherwise keep the current channel.</p>
-</li>
-<li>
-<p>Could be missing when operating SE which don’t support the Select Application command (as it is the case for CSM).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: Boolean keepChannelOpen</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the final logical channel status:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>if true, the SE reader keep active the logical channel of the SE application after processing the group of APDU commands.</p>
-</li>
-<li>
-<p>if false, the SE reader will close the logical channel of the SE application after processing the group of APDU commands (i.e. after the receipt of the last APDU response).</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: ApduRequest[0..*] apduRequests</p>
-<div class="ulist">
-<ul>
-<li>
-<p>contains a <strong>group</strong> of ApduCommand to operate on the selected SE application by the SE reader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: SeRequest(ByteArray aidToSelect[0..1], ApduRequest[0..*] apduRequests, Boolean keepChannelOpen)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the constructor called by a terminal in order to open a logical channel and/or to send a set of APDU commands to a SE through a ProxyReader.</p>
-</li>
-<li>
-<p>aidToSelect could be missing to operate SE that don’t support the Select Application command (as CSM):</p>
-<div class="ulist">
-<ul>
-<li>
-<p>in this case, the SE Reader Plugin could avoid to do a Select Application command to open a logical channel with the default application.</p>
-</li>
-<li>
-<p>Depending on the SE Reader Plugin, the presence of the AID could be required, as it is the case for the Android Open Mobile API plugin.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ByteArray getAidToSelect()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the current AID set to select</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ApduRequest[0..*] getApduRequests()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the group of APDUs to be transmitted to the SE application for this instance of SeRequest.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: Boolean askKeepChannelOpen()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns whether or not to keep the channel open after exchanging the APDU requests with the SE.</p>
-</li>
-</ul>
-</div>
+<p>A SE application implicitly selected is generally identified with the ATR of the SE.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="trueclass-applicationrequest"><a class="anchor" href="#trueclass-applicationrequest"></a>2.2.10. Class: ApplicationRequest</h4>
-<div class="paragraph">
-<p>This class aggregates the elements of a request to a local or remote SE Reader, sent through a ProxyReader, in order to open a logical channel with a SE application to select, and to transfer a group of APDU commands to run.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Allows to open a logical channel with an application, to transfer a group of APDU command requests, and defining the final status of the logical channel (open or closed).</p>
-</li>
-<li>
-<p>Returns the previous status of the logical channel and get a group of APDU command responses.
-Dedicated methods to open or close a channel are useless!</p>
-</li>
-<li>
-<p>private Attribute: ByteArray aidToSelect[0..1]</p>
-<div class="ulist">
-<ul>
-<li>
-<p>AID’s bytes of the SE Application to select. In case the SE Application is currently not selected, a logical channel is established, and the corresponding SE application is selected by the SE reader, otherwise keep the current channel.</p>
-</li>
-<li>
-<p>Could be missing when operating SE which don’t support the Select Application command (as it is the case for CSM).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: Boolean keepChannelOpen</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the final logical channel status:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>if true, the SE reader keep active the logical channel of the SE application after processing the group of APDU commands.</p>
-</li>
-<li>
-<p>if false, the SE reader will close the logical channel of the SE application after processing the group of APDU commands (i.e. after the receipt of the last APDU response).</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: ApduRequest[0..*] apduRequests</p>
-<div class="ulist">
-<ul>
-<li>
-<p>contains a <strong>group</strong> of ApduCommand to operate on the selected SE application by the SE reader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: SeRequest(ByteArray aidToSelect[0..1], ApduRequest[0..*] apduRequests, Boolean keepChannelOpen)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the constructor called by a terminal in order to open a logical channel and/or to send a set of APDU commands to a SE through a ProxyReader.</p>
-</li>
-<li>
-<p>aidToSelect could be missing to operate SE that don’t support the Select Application command (as CSM):</p>
-<div class="ulist">
-<ul>
-<li>
-<p>in this case, the SE Reader Plugin could avoid to do a Select Application command to open a logical channel with the default application.</p>
-</li>
-<li>
-<p>Depending on the SE Reader Plugin, the presence of the AID could be required, as it is the case for the Android Open Mobile API plugin.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ByteArray getAidToSelect()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the current AID set to select</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ApduRequest[0..*] getApduRequests()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the group of APDUs to be transmitted to the SE application for this instance of SeRequest.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: Boolean askKeepChannelOpen()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns whether or not to keep the channel open after exchanging the APDU requests with the SE.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-seresponse"><a class="anchor" href="#trueclass-seresponse"></a>2.2.11. Class: SeResponse</h4>
-<div class="paragraph">
-<p>This class aggregates the elements of a response from a local or remote SE Reader, received through a ProxyReader, including a group of APDU responses and the previous status of the logical channel with the targeted SE application.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>private Attribute: Boolean channelPreviouslyOpen</p>
-<div class="ulist">
-<ul>
-<li>
-<p>is defined as true by the SE reader in case a logical channel was already open with the target SE application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: ApduResponse[0..1] fci</p>
-<div class="ulist">
-<ul>
-<li>
-<p>present if channelPreviouslyOpen was false and if a Select Application command has been processed by the SE Reader Plugin, contains the FCI response of the channel opening (either the response of a SelectApplication command, or the response of a GetData(‘FCI’) command).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: ApduResponse[0..*] apduResponses</p>
-<div class="ulist">
-<ul>
-<li>
-<p>could contain a <strong>group</strong> of ApduResponse returned by the selected SE application on the SE reader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>private Attribute: ByteArray[0..1] atr</p>
-<div class="ulist">
-<ul>
-<li>
-<p>present if channelPreviouslyOpen is false and if the SE Reader manages the ATR (as for ISO 7816-3 contacts reader, or B’ Innovatron contactless reader), contains the ATR.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: SeResponse(Boolean[1] channelPreviouslyOpen, ApduResponse[0..1] fci, ApduResponse[0..*] apduResponses, ByteArray[0..1] atr)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the constructor called by a ProxyReader during the processing of the ‘transmit’ method.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: Boolean wasChannelPreviouslyOpen()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the previous state of the logical channel.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ApduResponse[0..1] getFci()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns null or the FCI response if a channel was opened.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ApduResponse[0..*] getApduResponses()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the group of APDUs responses returned by the SE application for this instance of SeResponse.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ByteArray[0..1] getAtr()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns null or the ATR if ATR is supported by the SE Reader and if a channel was opened.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-apdurequest"><a class="anchor" href="#trueclass-apdurequest"></a>2.2.12. Class: ApduRequest</h4>
-<div class="paragraph">
-<p>This class defines the elements of a single APDU command request:
-* private Attribute: ByteArray bytes
-<strong> an array of the bytes of an Apdu request (none structured, including the header and the dataIn of the command).
-* private Attribute: Boolean case4
-</strong> a ‘case 4’ flag in order to explicitly specify, if it’s expected that the APDU command returns data.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Method: ApduRequest(ByteArray bytes, Boolean case4)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the constructor called by a ticketing application in order to build the APDU command requests to push to the ProxyReader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ByteArray getBytes()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the data of the APDU request.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: Boolean isCase4()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the case4 flag.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="title">Support of old Calypso products not compliant with ISO 7816-4 for ‘case 4’ APDU in contacts mode:</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Calypso Revision 2.4 Portable Objects and ‘S1Dx’ SAM replies on a case 4 APDU in contacts mode the successful status 9000h instead of 61XYh → in this case the Reader Plugin wouldn’t be able to automatically request a GetResponse command for a length XYh.</p>
-</li>
-<li>
-<p>To recover this, case 4 APDU could be highlighted with this ‘case 4’ flag: then in case of missing data in the response with a successful status, the plugin will have to request a GetResponse for a length 00h.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-apduresponse"><a class="anchor" href="#trueclass-apduresponse"></a>2.2.13. Class: ApduResponse</h4>
-<div class="paragraph">
-<p>This class defines the elements of a single APDU command response:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>private</strong> Attribute: ByteArray bytes</p>
-<div class="ulist">
-<ul>
-<li>
-<p>an array of the bytes of an APDU response (none structured, including the dataOut field and the status of the command).</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>private</strong> Attribute: Boolean successful</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the success result of the processed APDU command.</p>
-</li>
-<li>
-<p><span class="red">To study, if there is an interest to keep this successful attribute, maybe a processing could be to add to ApduResquest a list of “expected status”, and to stop the SeRequest processing in case of failure.</span></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ApduRequest(ByteArray bytes, Boolean successful)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the constructor called by a ProxyReader in order to build the APDU command response to push to a ticketing application.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ByteArray getBytes()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the data of the APDU response.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: Boolean isSuccessful()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the status of the command transmission.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="title">Apdu command transmission chaining:</div>
-<div class="ulist">
-<ul>
-<li>
-<p>An optional attribute could provide the list of expected SW1SW2
-status: in order to stop SeRequest processing in case of unexpected
-status.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="truese-proxy-readers-settings-configurable-observable-options-for-plugins"><a class="anchor" href="#truese-proxy-readers-settings-configurable-observable-options-for-plugins"></a>2.3. SE Proxy - Readers' settings (configurable &amp; observable options for plugins)</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Interface to observe plugin&#8217;s events (hot-plug / unplug of readers) &amp; reader&#8217;s events (SE insertion / remove):</p>
-</li>
-</ul>
-</div>
+<div class="sect1">
+<h2 id="truenotification-of-plugin-reader-events"><a class="anchor" href="#truenotification-of-plugin-reader-events"></a>5. Notification of plugin &amp; reader events</h2>
+<div class="sectionbody">
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-Event.svg" alt="uml classDiagram seProxy Event.svg">
 </div>
 </div>
+<div class="paragraph">
+<p>To be notified on plugin events (hot-plug / unplug of some readers) &amp; reader events (insertion / remove of a SE in a specific reader), a terminal application could respectively implement interfaces of Plugin Observer or Reader Observer.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Interface to implement a reader plugin:</p>
+<p>Observers could be defined for a specific plugin or a reader.</p>
+</li>
+<li>
+<p>In case of status change, an observable plugin or reader will notify its observers.</p>
 </li>
 </ul>
+</div>
+<div class="sect2">
+<h3 id="truese-proxy-api-for-terminal-application-implementation-2"><a class="anchor" href="#truese-proxy-api-for-terminal-application-implementation-2"></a>5.1. SE Proxy API - for terminal application implementation</h3>
+<div class="paragraph">
+<p>The observability of plugins &amp; readers is defined on the Observable pattern.
+The SE Proxy API includes several abstract classes in order to factorize the generic processing of reader plugins, and to limit as possible the code to implement when defining a new specific plugin.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-FactorizedPlugin.svg" alt="uml classDiagram seProxy FactorizedPlugin.svg">
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Standard reader plugins integration:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Some standard reader plugins integration:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-NativePlugin.svg" alt="uml classDiagram seProxy NativePlugin.svg">
 </div>
 </div>
-<div class="paragraph">
-<p>SE Reader able to notify about its status’ change (Optional for Reader’s
-Plugins)</p>
-</div>
-<div class="paragraph">
-<p>In order to notify a ticketing application in case of specific reader
-events (IO Error, SE Insertion or SE Removal), the SE Proxy implements
-the ‘Observer’ design pattern.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A terminal application willing to get notifications from a
-SpecifcReader must implement ReaderObserver. By casting the ProxyReader
-as ObservableReader, the application could register its
-SpecificObserver.</p>
-</li>
-<li>
-<p>To issue notifications a plugin must instantiate a subclass of
-NotiferReader, its SpecificReader could then notify registered
-ReaderObserver.</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="trueabstract-class-observablereader"><a class="anchor" href="#trueabstract-class-observablereader"></a>2.3.1. abstract Class: ObservableReader</h4>
-<div class="paragraph">
-<p>This abstract class could be <strong>“optionally” subclassed by the plugins of
-readers’ drivers</strong>. ObservableReader extends ProxyReader.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>private</strong> Attribute: ReaderObserver[0..*] readerObservers</p>
-<div class="ulist">
-<ul>
-<li>
-<p>an array referencing the registered ReaderObserver of the Reader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>final</strong> method: void attachObserver(ReaderObserver calledBack)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>add a ReaderObserver to the list of registered ReaderObserver for the
-selected ObservableReader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>final</strong> method: void detachObserver(ReaderObserver calledBack)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>remove a ReaderObserver from the list of registered ReaderObserver
-for the selected ObservableReader.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueabstract-class-notifierreader"><a class="anchor" href="#trueabstract-class-notifierreader"></a>2.3.2. abstract Class: NotifierReader</h4>
-<div class="paragraph">
-<p>This abstract class could be <strong>“optionally” subclassed by the plugins of
-readers’ drivers</strong>. NotifierReader <strong>extends</strong> ObservableReader and
-<strong>implements</strong> ProxyReader.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>final</strong> method: void notifyObservers(ReaderEvent event)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>push a ReaderEvent of the selected ObservableReader to its registered
-ReaderObserver.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The methods defined by the ProxyReader interface are <strong>abstract</strong> in
-NotifierReader.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-readerevent"><a class="anchor" href="#trueclass-readerevent"></a>2.3.3. Class: ReaderEvent</h4>
-<div class="paragraph">
-<p>This class is used to notify an event of a specific ObservableReader /
-NotifierReader to its registered ReaderObserver in case of IO Error, SE
-insertion or removal.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Inner</strong> Enumeration: EventType</p>
-<div class="ulist">
-<ul>
-<li>
-<p>defined with the elements: ‘IO_ERROR’, ‘SE_INSERTED’, &amp; ‘SE_REMOVAL’.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>private</strong> Attribute: NotifierReader reader</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the reader pushing the notification.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>private</strong> Attribute: EventType event</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the type of the notified event.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: ReaderEvent(NotifierReader reader, EventType event)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the constructor</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: NotifierReader getReader()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the reader notifying the event.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Method: EventType getEventType ()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the type of the event.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueinterface-or-abstract-class-readerobserver"><a class="anchor" href="#trueinterface-or-abstract-class-readerobserver"></a>2.3.4. Interface (or abstract Class): ReaderObserver</h4>
-<div class="paragraph">
-<p>This interface (or abstract class) could be <strong>“optionally” implemented
-(extended) by ticketing applications</strong> interested in receiving
-notification from ObservableReader.</p>
-</div>
-<div class="paragraph">
-<p>For example, it’s useful to implement in the ticketing application of a
-validator in order to start (or stop) a transaction in case of SE
-detection (lost).</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Abstract</strong> method: void notify(ReaderEvent event)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>called by an ObservableReader to push a specific ReaderEvent.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueinterface-or-abstract-class-configurablereader"><a class="anchor" href="#trueinterface-or-abstract-class-configurablereader"></a>2.3.5. Interface (or abstract Class): ConfigurableReader</h4>
-<div class="paragraph">
-<p>This interface (or abstract class) could be <strong>“optionally” implemented
-(extended) by the plugins of readers’ drivers</strong>. ConfigurableReader
-extends ProxyReader.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Abstract</strong> method: Map&lt;String, String&gt; getParameters()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the configuration of the selected reader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Abstract</strong> method: String setAParameter(String key, String value)
-throw WrongParameterKeyException, InconsistentParameterValueException,
-ParameterProcessingErrorException</p>
-<div class="ulist">
-<ul>
-<li>
-<p>could be used to set a single parameter.</p>
-</li>
-<li>
-<p>The method returns a String, thus, it could also be used to manage
-specific request/response setup operations with a reader.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Abstract</strong> method: void setParameters(Map&lt;String, String&gt; settings)
-throw WrongParameterKeyException, InconsistentParameterValueException,
-ParameterProcessingErrorException</p>
-<div class="ulist">
-<ul>
-<li>
-<p>allows to define some or all proprietary settings for a plugin
-(contactless protocols polling sequence, baud rate, … etc.) by setting a
-key-value Map of parameters.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Abstract</strong> method: Map&lt;String, String&gt; getParameters()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the configuration of the selected reader.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-wrongparameterkeyexception"><a class="anchor" href="#trueclass-wrongparameterkeyexception"></a>2.3.6. Class: WrongParameterKeyException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-inconsistentparametervalueexception"><a class="anchor" href="#trueclass-inconsistentparametervalueexception"></a>2.3.7. Class: InconsistentParameterValueException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="trueclass-parameterprocessingerrorexception"><a class="anchor" href="#trueclass-parameterprocessingerrorexception"></a>2.3.8. Class: ParameterProcessingErrorException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="true-generic-command-api"><a class="anchor" href="#true-generic-command-api"></a>3. 'Generic Command' API</h2>
+<h2 id="true-generic-command-api"><a class="anchor" href="#true-generic-command-api"></a>6. 'Generic Command' API</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The 'Commands' module is the base to define the APDU commands’ sets for a specific Secure Element application. All these commands could be operated independently in <strong>standalone</strong>.</p>
@@ -1640,7 +831,7 @@ key-value Map of parameters.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="trueinterface-commandstable"><a class="anchor" href="#trueinterface-commandstable"></a>3.1. Interface: CommandsTable</h3>
+<h3 id="trueinterface-commandstable"><a class="anchor" href="#trueinterface-commandstable"></a>6.1. Interface: CommandsTable</h3>
 <div class="paragraph">
 <p>This interface allows to define a register of Commands’ Sets including association between Commands’ Builders and Responses’ Parsers. It provides the generic getters to retrieve: the name &amp; the instruction byte of a command, and the corresponding ApduCommandBuilder &amp; ApduResponseParser classes.</p>
 </div>
@@ -1690,7 +881,7 @@ key-value Map of parameters.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="trueabstract-class-apducommandbuilder"><a class="anchor" href="#trueabstract-class-apducommandbuilder"></a>3.2. abstract Class: ApduCommandBuilder</h3>
+<h3 id="trueabstract-class-apducommandbuilder"><a class="anchor" href="#trueabstract-class-apducommandbuilder"></a>6.2. abstract Class: ApduCommandBuilder</h3>
 <div class="paragraph">
 <p>This <strong>abstract</strong> class has to be <strong>extended by all SE command builder classes</strong>, it provides the generic getters to retrieve: the name of the command, the built ApduRequest, the corresponding ApduResponseParser class.</p>
 </div>
@@ -1763,7 +954,7 @@ key-value Map of parameters.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="trueabstract-class-apduresponseparser"><a class="anchor" href="#trueabstract-class-apduresponseparser"></a>3.3. abstract Class: ApduResponseParser</h3>
+<h3 id="trueabstract-class-apduresponseparser"><a class="anchor" href="#trueabstract-class-apduresponseparser"></a>6.3. abstract Class: ApduResponseParser</h3>
 <div class="paragraph">
 <p>This <strong>abstract</strong> class has to be <strong>extended by all SE response parser classes</strong>, it provides the generic getters to manage response’s status.</p>
 </div>
@@ -1858,7 +1049,7 @@ key-value Map of parameters.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="true-remote-se-api"><a class="anchor" href="#true-remote-se-api"></a>4. 'Remote SE' API</h2>
+<h2 id="true-remote-se-service"><a class="anchor" href="#true-remote-se-service"></a>7. 'Remote SE' service</h2>
 <div class="sectionbody">
 
 </div>
@@ -1866,7 +1057,7 @@ key-value Map of parameters.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-18 14:55:30 M
+Last updated 2018-06-19 00:35:42 M
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
