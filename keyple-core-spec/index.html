@@ -610,6 +610,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="truese-proxy-apdu-command-transmission-supported-by-all-plugins"><a class="anchor" href="#truese-proxy-apdu-command-transmission-supported-by-all-plugins"></a>2.2. SE Proxy - APDU command transmission (supported by all plugins)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Interface to access SE readers (though reader&#8217;s plugins):</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./build/images/uml-classDiagram-seProxy-AccessReader.svg" alt="uml classDiagram seProxy AccessReader.svg">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Interface to transmit APDU command through a SE readers:</p>
+</li>
+</ul>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-TransmitApdu.svg" alt="uml classDiagram seProxy TransmitApdu.svg">
@@ -1284,9 +1303,40 @@ status.</p>
 </div>
 <div class="sect2">
 <h3 id="truese-proxy-readers-settings-configurable-observable-options-for-plugins"><a class="anchor" href="#truese-proxy-readers-settings-configurable-observable-options-for-plugins"></a>2.3. SE Proxy - Readers' settings (configurable &amp; observable options for plugins)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Interface to observe plugin&#8217;s events (hot-plug / unplug of readers) &amp; reader&#8217;s events (SE insertion / remove):</p>
+</li>
+</ul>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="./build/images/uml-classDiagram-seProxy-Service.svg" alt="uml classDiagram seProxy Service.svg">
+<img src="./build/images/uml-classDiagram-seProxy-Event.svg" alt="uml classDiagram seProxy Event.svg">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Interface to implement a reader plugin:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./build/images/uml-classDiagram-seProxy-FactorizedPlugin.svg" alt="uml classDiagram seProxy FactorizedPlugin.svg">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standard reader plugins integration:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./build/images/uml-classDiagram-seProxy-NativePlugin.svg" alt="uml classDiagram seProxy NativePlugin.svg">
 </div>
 </div>
 <div class="paragraph">
@@ -1816,7 +1866,7 @@ key-value Map of parameters.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-05 00:11:07 M
+Last updated 2018-06-18 14:55:30 M
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
