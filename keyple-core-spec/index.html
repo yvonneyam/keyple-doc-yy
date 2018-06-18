@@ -432,24 +432,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#true-secure-element-proxy-api">2. 'Secure Element Proxy' API</a>
 <ul class="sectlevel2">
 <li><a href="#truefunctional-processing">2.1. Functional processing</a></li>
-<li><a href="#truese-proxy-api-for-terminal-application-implementation">2.2. SE Proxy API - for terminal application implementation</a></li>
+<li><a href="#truese-proxy-api-for-terminal-application-implementation">2.2. SE Proxy API - for terminal application implementation</a>
+<ul class="sectlevel3">
+<li><a href="#trueaccess-to-configurable-se-readers">2.2.1. Access to configurable SE readers</a></li>
+<li><a href="#trueapdu-command-transmission">2.2.2. APDU command transmission</a></li>
+<li><a href="#truenotification-of-plugin-reader-events">2.2.3. Notification of plugin &amp; reader events</a></li>
 </ul>
 </li>
-<li><a href="#trueaccess-to-configurable-se-readers">3. Access to configurable SE readers</a></li>
-<li><a href="#trueapdu-command-transmission">4. APDU command transmission</a></li>
-<li><a href="#truenotification-of-plugin-reader-events">5. Notification of plugin &amp; reader events</a>
+<li><a href="#truese-proxy-api-for-terminal-application-implementation-2">2.3. SE Proxy API - for terminal application implementation</a></li>
+</ul>
+</li>
+<li><a href="#true-generic-command-api">3. 'Generic Command' API</a>
 <ul class="sectlevel2">
-<li><a href="#truese-proxy-api-for-terminal-application-implementation-2">5.1. SE Proxy API - for terminal application implementation</a></li>
+<li><a href="#trueinterface-commandstable">3.1. Interface: CommandsTable</a></li>
+<li><a href="#trueabstract-class-apducommandbuilder">3.2. abstract Class: ApduCommandBuilder</a></li>
+<li><a href="#trueabstract-class-apduresponseparser">3.3. abstract Class: ApduResponseParser</a></li>
 </ul>
 </li>
-<li><a href="#true-generic-command-api">6. 'Generic Command' API</a>
-<ul class="sectlevel2">
-<li><a href="#trueinterface-commandstable">6.1. Interface: CommandsTable</a></li>
-<li><a href="#trueabstract-class-apducommandbuilder">6.2. abstract Class: ApduCommandBuilder</a></li>
-<li><a href="#trueabstract-class-apduresponseparser">6.3. abstract Class: ApduResponseParser</a></li>
-</ul>
-</li>
-<li><a href="#true-remote-se-service">7. 'Remote SE' service</a></li>
+<li><a href="#true-remote-se-service">4. 'Remote SE' service</a></li>
 </ul>
 </div>
 </div>
@@ -611,13 +611,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="truese-proxy-api-for-terminal-application-implementation"><a class="anchor" href="#truese-proxy-api-for-terminal-application-implementation"></a>2.2. SE Proxy API - for terminal application implementation</h3>
-
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="trueaccess-to-configurable-se-readers"><a class="anchor" href="#trueaccess-to-configurable-se-readers"></a>3. Access to configurable SE readers</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="trueaccess-to-configurable-se-readers"><a class="anchor" href="#trueaccess-to-configurable-se-readers"></a>2.2.1. Access to configurable SE readers</h4>
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-AccessReader.svg" alt="uml classDiagram seProxy AccessReader.svg">
@@ -672,10 +667,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Plugins &amp; SE readers could require the setting of specific parameters.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="trueapdu-command-transmission"><a class="anchor" href="#trueapdu-command-transmission"></a>4. APDU command transmission</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="trueapdu-command-transmission"><a class="anchor" href="#trueapdu-command-transmission"></a>2.2.2. APDU command transmission</h4>
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-TransmitApdu.svg" alt="uml classDiagram seProxy TransmitApdu.svg">
@@ -762,10 +755,8 @@ For an APDU request, the optional setting of successful status code other that 0
 </ul>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="truenotification-of-plugin-reader-events"><a class="anchor" href="#truenotification-of-plugin-reader-events"></a>5. Notification of plugin &amp; reader events</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="truenotification-of-plugin-reader-events"><a class="anchor" href="#truenotification-of-plugin-reader-events"></a>2.2.3. Notification of plugin &amp; reader events</h4>
 <div class="imageblock">
 <div class="content">
 <img src="./build/images/uml-classDiagram-seProxy-Event.svg" alt="uml classDiagram seProxy Event.svg">
@@ -784,8 +775,10 @@ For an APDU request, the optional setting of successful status code other that 0
 </li>
 </ul>
 </div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="truese-proxy-api-for-terminal-application-implementation-2"><a class="anchor" href="#truese-proxy-api-for-terminal-application-implementation-2"></a>5.1. SE Proxy API - for terminal application implementation</h3>
+<h3 id="truese-proxy-api-for-terminal-application-implementation-2"><a class="anchor" href="#truese-proxy-api-for-terminal-application-implementation-2"></a>2.3. SE Proxy API - for terminal application implementation</h3>
 <div class="paragraph">
 <p>The observability of plugins &amp; readers is defined on the Observable pattern.
 The SE Proxy API includes several abstract classes in order to factorize the generic processing of reader plugins, and to limit as possible the code to implement when defining a new specific plugin.</p>
@@ -807,7 +800,7 @@ The SE Proxy API includes several abstract classes in order to factorize the gen
 </div>
 </div>
 <div class="sect1">
-<h2 id="true-generic-command-api"><a class="anchor" href="#true-generic-command-api"></a>6. 'Generic Command' API</h2>
+<h2 id="true-generic-command-api"><a class="anchor" href="#true-generic-command-api"></a>3. 'Generic Command' API</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The 'Commands' module is the base to define the APDU commands’ sets for a specific Secure Element application. All these commands could be operated independently in <strong>standalone</strong>.</p>
@@ -831,7 +824,7 @@ The SE Proxy API includes several abstract classes in order to factorize the gen
 </div>
 </div>
 <div class="sect2">
-<h3 id="trueinterface-commandstable"><a class="anchor" href="#trueinterface-commandstable"></a>6.1. Interface: CommandsTable</h3>
+<h3 id="trueinterface-commandstable"><a class="anchor" href="#trueinterface-commandstable"></a>3.1. Interface: CommandsTable</h3>
 <div class="paragraph">
 <p>This interface allows to define a register of Commands’ Sets including association between Commands’ Builders and Responses’ Parsers. It provides the generic getters to retrieve: the name &amp; the instruction byte of a command, and the corresponding ApduCommandBuilder &amp; ApduResponseParser classes.</p>
 </div>
@@ -881,7 +874,7 @@ The SE Proxy API includes several abstract classes in order to factorize the gen
 </div>
 </div>
 <div class="sect2">
-<h3 id="trueabstract-class-apducommandbuilder"><a class="anchor" href="#trueabstract-class-apducommandbuilder"></a>6.2. abstract Class: ApduCommandBuilder</h3>
+<h3 id="trueabstract-class-apducommandbuilder"><a class="anchor" href="#trueabstract-class-apducommandbuilder"></a>3.2. abstract Class: ApduCommandBuilder</h3>
 <div class="paragraph">
 <p>This <strong>abstract</strong> class has to be <strong>extended by all SE command builder classes</strong>, it provides the generic getters to retrieve: the name of the command, the built ApduRequest, the corresponding ApduResponseParser class.</p>
 </div>
@@ -954,7 +947,7 @@ The SE Proxy API includes several abstract classes in order to factorize the gen
 </div>
 </div>
 <div class="sect2">
-<h3 id="trueabstract-class-apduresponseparser"><a class="anchor" href="#trueabstract-class-apduresponseparser"></a>6.3. abstract Class: ApduResponseParser</h3>
+<h3 id="trueabstract-class-apduresponseparser"><a class="anchor" href="#trueabstract-class-apduresponseparser"></a>3.3. abstract Class: ApduResponseParser</h3>
 <div class="paragraph">
 <p>This <strong>abstract</strong> class has to be <strong>extended by all SE response parser classes</strong>, it provides the generic getters to manage response’s status.</p>
 </div>
@@ -1049,7 +1042,7 @@ The SE Proxy API includes several abstract classes in order to factorize the gen
 </div>
 </div>
 <div class="sect1">
-<h2 id="true-remote-se-service"><a class="anchor" href="#true-remote-se-service"></a>7. 'Remote SE' service</h2>
+<h2 id="true-remote-se-service"><a class="anchor" href="#true-remote-se-service"></a>4. 'Remote SE' service</h2>
 <div class="sectionbody">
 
 </div>
@@ -1057,7 +1050,7 @@ The SE Proxy API includes several abstract classes in order to factorize the gen
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-19 00:35:42 M
+Last updated 2018-06-19 01:59:09 M
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
