@@ -16,9 +16,9 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
   - Update of the Calypso Secured Session (org.eclipse.keyple.calypso.transaction.PoSecureSession) in order to support the new multi-SE request feature.
     - Improvement of the 'KeypleCalypsoDemo_HoplinkTransaction' PC Java example ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleCalypsoDemo_HoplinkTransaction.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/examples/pc/KeypleCalypsoDemo_HoplinkTransaction.java) ) ==> in case of Hoplink card detection, operates 3 chained Calypso Secure Session with different settings:
       - first session : initial Hoplink selection & simple two steps secure session, without sendable in session PO commands, asking to keep the logical channel open,
-      - second session : Using the same logical channel (no of Hoplink selection) three steps secured session including several PO read or write commands sendable in session. The physical channel is closed at the end.
+      - second session : Using the same logical channel (no need of Hoplink selection) three steps secured session including several PO read or write commands sendable in session. The physical channel is closed at the end.
       - third session : new Hoplink selection, simple two steps secure session, & close of the physical channel.
-  - Improvements of the plugin abstract classes factorizing code for SE reader plugins.
+  - Improvements of the plugin abstract classes factorizing code for SE reader plugins ==> the amount of code required to implement a proprietary reader plugin is strongly reduced.
 
 - June 2018
   - Definition of the Remote SE plugin.
@@ -36,7 +36,7 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
  - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugins/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugins/pcsc/javadoc/)
 - **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugins/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugins/stub/javadoc/)
 
-For the moment, the JavaDocs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks. Pending, developers have the possibility to generate them by themselves from the keyple-java repository.
+For the moment, the JavaDocs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks. Pending, developers have the possibility to generate them by themselves from the Keyple-java repository.
  
 ### JARs
  Simple archives:
