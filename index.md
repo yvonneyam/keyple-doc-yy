@@ -1,5 +1,5 @@
 # 'Eclipse Keyple' project 
-## Status & current works (18/06/19)
+## Status & current works (18/06/27)
 - **Week #22**:
   - Finished a wide refactoring of the SE Proxy layer to requests for multi-SE.
   - Two PC Java examples are fully ready for the PC/SC plugin:
