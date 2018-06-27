@@ -19,8 +19,10 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
       - second session : Using the same logical channel (no need of Hoplink selection) three steps secured session including several PO read or write commands sendable in session. The physical channel is closed at the end.
       - third session : new Hoplink selection, simple two steps secure session, & close of the physical channel.
   - Improvements of the plugin abstract classes factorizing code for SE reader plugins ==> the amount of code required to implement a proprietary reader plugin is strongly reduced.
+- **Week #25**:
+    - Improvement of the Code factorization for the implementation  of Reader Plugins ==> now the integration of a new proprietary plugin would require to just define native interfaces wrapping & specific parameters setting.
 
-- June 2018
+- July 2018
   - Definition of the Remote SE plugin.
 
 ## Documentations & binaries
