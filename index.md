@@ -26,6 +26,17 @@ For the moment, the JARs of the two Android plugins (NFC reader & OMAPI) aren't 
 Fat archive:
 - **'FAT JAR of PC examples with dependencies'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar)
 
+### Keyple implementation reference examples
+ - Three PC Java examples involving the PC/SC plugin:
+    - Generic for any SE:  
+      - 'KeypleGenericDemo_SeProtocolDetection' ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_SeProtocolDetection.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_SeProtocolDetection.java) ) ==> to detect the kind of SE presented on a contactless reader.
+      - 'KeypleGenericDemo_ObservableReaderNotification' ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_ObservableReaderNotification.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_ObservableReaderNotification.java) ) ==> to observe the readers' configuration & SEs' status on a PC (notification of reader hot-plug/unplug, notification of SE insertion/removal).
+    - Specific to Calypso, processing the Hoplink application
+      -  'KeypleCalypsoDemo_HoplinkTransaction' ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleCalypsoDemo_HoplinkTransaction.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleCalypsoDemo_HoplinkTransaction.java) ) ==> in case of Hoplink card detection, operates 3 chained Calypso Secure Session with different settings:
+         - first session : initial Hoplink selection & simple two steps secure session, without sendable in session PO commands, asking to keep the logical channel open,
+         - second session : Using the same logical channel (no need of Hoplink selection) three steps secured session including several PO read or write commands sendable in session. The physical channel is closed at the end.
+         - third session : new Hoplink selection, simple two steps secure session, & close of the physical channel.
+
 ## Status & current works 
 - Coming during July 2018
   - Definition of the Remote SE plugin.
@@ -37,10 +48,7 @@ Fat archive:
     - Improvement of the Code factorization for the implementation  of Reader Plugins ==> now the integration of a new proprietary plugin would require to just define native interfaces wrapping & specific parameters setting.
 - **Week #24**:
   - Update of the Calypso Secured Session (org.eclipse.keyple.calypso.transaction.PoSecureSession) in order to support the new multi-SE request feature.
-    - Improvement of the 'KeypleCalypsoDemo_HoplinkTransaction' PC Java example ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleCalypsoDemo_HoplinkTransaction.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleCalypsoDemo_HoplinkTransaction.java) ) ==> in case of Hoplink card detection, operates 3 chained Calypso Secure Session with different settings:
-      - first session : initial Hoplink selection & simple two steps secure session, without sendable in session PO commands, asking to keep the logical channel open,
-      - second session : Using the same logical channel (no need of Hoplink selection) three steps secured session including several PO read or write commands sendable in session. The physical channel is closed at the end.
-      - third session : new Hoplink selection, simple two steps secure session, & close of the physical channel.
+    - Improvement of the 'KeypleCalypsoDemo_HoplinkTransaction' PC Java example.
   - Improvements of the plugin abstract classes factorizing code for SE reader plugins ==> the amount of code required to implement a proprietary reader plugin is strongly reduced.
 - **Week #23**:
   - Update of the Calypso Secured Session (org.eclipse.keyple.calypso.transaction.PoSecureSession) in order to support the new multi-SE request feature.
@@ -49,6 +57,4 @@ Fat archive:
 org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the ApduRequest/ApduResponse processing between plugins of local readers).
 - **Week #22**:
   - Finished a wide refactoring of the SE Proxy layer to requests for multi-SE.
-  - Two PC Java examples are fully ready for the PC/SC plugin:
-    - KeypleGenericDemo_ObservableReaderNotification ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_ObservableReaderNotification.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_ObservableReaderNotification.java) ) ==> to observe the readers' configuration & SEs' status on a PC (notification of reader hot-plug/unplug, notification of SE insertion/removal).
-    - KeypleGenericDemo_SeProtocolDetection ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_SeProtocolDetection.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_SeProtocolDetection.java) ) ==> to detect the kind of SE presented on a contactless reader.
+  - Two PC Java examples are fully ready for the PC/SC plugin: KeypleGenericDemo_ObservableReaderNotification &  KeypleGenericDemo_SeProtocolDetection.
