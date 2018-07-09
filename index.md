@@ -32,7 +32,7 @@ Fat archive:
   - Week #28 : For OMAPI Plugin: management of application not selected through AID.
 
 - **Week #27**:
-  - Separation of the factorization library to support Reader Plugin implementations (dedicated package: 'org.eclipse.keyple.seproxy.plugin'), and simplification of the SE Proxy API for Keyple applications.
+  - Separation of the factorization library to support Reader Plugin implementations (dedicated package: 'org.eclipse.keyple.seproxy.plugin'), and simplification of the SE Proxy API for Keyple applications. Further the SE Proxy API for Keyple Application will stay static in case of plugin factorization library evolution.
 /keyple-examples/pc/src/main/java/org/eclipse/keyple/examples
 - **Week #25**:
     - Improvement of the Code factorization for the implementation  of Reader Plugins ==> now the integration of a new proprietary plugin would require to just define native interfaces wrapping & specific parameters setting.
