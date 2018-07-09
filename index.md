@@ -26,7 +26,7 @@ For the moment, the JARs of the two Android plugins (NFC reader & OMAPI) aren't 
 Fat archive:
 - **'FAT JAR of PC examples with dependencies'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar)
 
-### Keyple implementation reference examples
+### Reference Keyple implementation examples
  - Three PC Java examples involving the PC/SC plugin:
     - Generic for any SE:  
       - 'KeypleGenericDemo_SeProtocolDetection' ( [https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_SeProtocolDetection.java](https://github.com/calypsonet/keyple-java/blob/develop/keyple-example/pc/src/main/java/org/eclipse/keyple/example/pc/KeypleGenericDemo_SeProtocolDetection.java) ) ==> to detect the kind of SE presented on a contactless reader.
