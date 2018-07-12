@@ -9,8 +9,8 @@
 ### JavaDoc{s}
 - **'Keyple Core module' JavaDoc**: [https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/)
  - **'Keyple Calypso Library JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/)
- - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugins/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugins/pcsc/javadoc/)
-- **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugins/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugins/stub/javadoc/)
+ - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/)
+- **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/)
 
 For the moment, the JavaDocs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks. Pending, developers have the possibility to generate them by themselves from the Keyple-java repository.
  
