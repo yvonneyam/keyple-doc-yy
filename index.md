@@ -1,4 +1,4 @@
-# 'Eclipse Keyple' project (2018/07/09)
+# 'Eclipse Keyple' project (2018/07/12)
 
 ## Documentations & binaries
 ### Functional specifications:
@@ -11,8 +11,8 @@
  - **'Keyple Calypso Library JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/)
  - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/)
 - **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/)
-
-For the moment, the JavaDocs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks. Pending, developers have the possibility to generate them by themselves from the Keyple-java repository.
+- **'Keyple plugin "Android NFC" JavaDoc'**: [https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-nfc/javadoc/](https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-nfc/javadoc/)
+- **'Keyple plugin "Android OMAPI" JavaDoc'**: [https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-omapi/javadoc/](https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-omapi/javadoc/)
  
 ### JARs
  Simple archives:
@@ -40,7 +40,7 @@ Fat archive:
 ## Status & current works 
 - Coming during July 2018
   - Definition of the Remote SE plugin.
-  - Week #28 : For OMAPI Plugin: management of application not selected through AID.
+  - Week #29 : For OMAPI Plugin: management of application not selected through AID.
 
 - **Week #27**:
   - Separation of the factorization library to support Reader Plugin implementations (dedicated package: 'org.eclipse.keyple.seproxy.plugin'), and simplification of the SE Proxy API for Keyple applications. Further the SE Proxy API for Keyple Application will stay static in case of plugin factorization library evolution.
@@ -58,3 +58,4 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
 - **Week #22**:
   - Finished a wide refactoring of the SE Proxy layer to requests for multi-SE.
   - Two PC Java examples are fully ready for the PC/SC plugin: KeypleGenericDemo_ObservableReaderNotification &  KeypleGenericDemo_SeProtocolDetection.
+
