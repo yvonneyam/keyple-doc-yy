@@ -11,8 +11,8 @@
  - **'Keyple Calypso Library JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/)
  - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/)
 - **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/)
-- **'Keyple plugin "Android NFC" JavaDoc'**: [https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-nfc/javadoc/](https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-nfc/javadoc/)
-- **'Keyple plugin "Android OMAPI" JavaDoc'**: [https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-omapi/javadoc/](https://calypsonet.github.io/keyple-java/gh-pages-for-android/keyple-plugin/android-omapi/javadoc/)
+- **'Keyple plugin "Android NFC" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-nfc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-nfc/javadoc/)
+- **'Keyple plugin "Android OMAPI" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/)
  
 ### JARs
  Simple archives:
