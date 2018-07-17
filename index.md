@@ -18,10 +18,10 @@
  Simple archives:
 - **'Keyple Core module' JAR**:  [https://calypsonet.github.io/keyple-java/develop/jars/keyple-core-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-core-1.0-SNAPSHOT.jar)
  - **'Keyple Calypso Library JAR'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-calypso-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-calypso-1.0-SNAPSHOT.jar)
- - **'Keyple plugin PC/SC JAR'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-pcsc-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-pcsc-1.0-SNAPSHOT.jar)
-- **'Keyple plugin PC "stub" JAR'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-stub-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-stub-1.0-SNAPSHOT.jar)
-
-For the moment, the JARs of the two Android plugins (NFC reader & OMAPI) aren't yet publicly hosted on github.io ==> it'll be solved in the coming weeks.
+ - **'Keyple PC/SC plugin JAR'**: to manage PC/SC readers on a PC environment supporting the # javax.smartcardio API[https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-pcsc-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-pcsc-1.0-SNAPSHOT.jar)
+- **'Keyple NFC Android plugin AAR'**: to operate the contactless reader of an Android Environment supporting the android.nfc API [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-nfc-debug.aar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-nfc-debug.aar)
+- **'Keyple OMAPI Android plugin AAR'**: to operate the internal contacts readers of an Android Environment supporting the OMAPI [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-omapi-debug.aar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-omapi-debug.aar)
+- **'Keyple "stub" plugin JAR'**: plugin to simulate the presence of fake readers with or without fake cards [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-stub-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-stub-1.0-SNAPSHOT.jar)
 
 Fat archive:
 - **'FAT JAR of PC examples with dependencies'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar)
@@ -58,4 +58,3 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
 - **Week #22**:
   - Finished a wide refactoring of the SE Proxy layer to requests for multi-SE.
   - Two PC Java examples are fully ready for the PC/SC plugin: KeypleGenericDemo_ObservableReaderNotification &  KeypleGenericDemo_SeProtocolDetection.
-
