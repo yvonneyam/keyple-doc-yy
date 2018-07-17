@@ -15,15 +15,15 @@
 - **'Keyple plugin "Android OMAPI" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/)
  
 ### JARs
- Simple archives:
+Keyple modules - simple archives:
 - **'Keyple Core module' JAR**:  [https://calypsonet.github.io/keyple-java/develop/jars/keyple-core-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-core-1.0-SNAPSHOT.jar)
  - **'Keyple Calypso Library JAR'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-calypso-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-calypso-1.0-SNAPSHOT.jar)
+Keyple plugins - simple archives:
  - **'Keyple PC/SC plugin JAR'**: to manage PC/SC readers on a PC environment supporting the # javax.smartcardio API[https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-pcsc-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-pcsc-1.0-SNAPSHOT.jar)
 - **'Keyple NFC Android plugin AAR'**: to operate the contactless reader of an Android Environment supporting the android.nfc API [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-nfc-debug.aar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-nfc-debug.aar)
 - **'Keyple OMAPI Android plugin AAR'**: to operate the internal contacts readers of an Android Environment supporting the OMAPI [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-omapi-debug.aar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-android-omapi-debug.aar)
 - **'Keyple "stub" plugin JAR'**: plugin to simulate the presence of fake readers with or without fake cards [https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-stub-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-plugin-stub-1.0-SNAPSHOT.jar)
-
-Fat archive:
+Keyple examples - FAT archive:
 - **'FAT JAR of PC examples with dependencies'**: [https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar](https://calypsonet.github.io/keyple-java/develop/jars/keyple-example-pc-fat-1.0-SNAPSHOT.jar)
 
 ### Reference Keyple implementation examples
