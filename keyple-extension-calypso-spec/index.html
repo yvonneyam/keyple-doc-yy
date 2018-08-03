@@ -497,14 +497,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_class_digestauthenticateresppars">1.6.7. Class: DigestAuthenticateRespPars</a></li>
 </ul>
 </li>
-<li><a href="#_calypso_high_layer_calypso_secure_transaction_api">1.7. Calypso High layer – Calypso Secure Transaction API</a>
-<ul class="sectlevel3">
-<li><a href="#_po_csm_flows_during_a_calypso_secure_session">1.7.1. PO &amp; CSM flows during a Calypso Secure Session</a></li>
-<li><a href="#_class_posecuresession">1.7.2. Class: PoSecureSession</a></li>
-<li><a href="#_secure_transaction_modes">1.7.3. Secure transaction modes</a></li>
-<li><a href="#_proxyreader_flows_for_a_3_steps_secure_transaction">1.7.4. ProxyReader flows for a 3 steps secure transaction</a></li>
 </ul>
 </li>
+<li><a href="#_calypso_high_layer_calypso_secure_transaction_api">2. Calypso High layer – Calypso Secure Transaction API</a>
+<ul class="sectlevel2">
+<li><a href="#_po_csm_flows_during_a_calypso_secure_session">2.1. PO &amp; CSM flows during a Calypso Secure Session</a></li>
+<li><a href="#_class_posecuresession">2.2. Class: PoSecureSession</a></li>
+<li><a href="#_secure_transaction_modes">2.3. Secure transaction modes</a></li>
+<li><a href="#_proxyreader_flows_for_a_3_steps_secure_transaction">2.4. ProxyReader flows for a 3 steps secure transaction</a></li>
 </ul>
 </li>
 </ul>
@@ -578,7 +578,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-classDiagram-CalypsoCommand-CalypsoTable.svg" alt="Calypso - Calypso Commands Tables">
+<img src="./images/build/uml-classDiagram-CalypsoCommand-CalypsoTable.svg" alt="Class Diagram - Calypso Commands Tables">
 </div>
 </div>
 <div class="sect3">
@@ -915,7 +915,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-classDiagram-CalypsoCommand-PoCommands.svg" alt="Calypso - PO Commands Table">
+<img src="./images/build/uml-classDiagram-CalypsoCommand-PoCommands.svg" alt="Class Diagram - Calypso PO Commands Table">
 </div>
 </div>
 <div class="ulist">
@@ -2065,7 +2065,7 @@ etc.).”</p></td>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-classDiagram-CalypsoCommand-CsmCommands.svg" alt="Calypso - CSM Commands Table">
+<img src="./images/build/uml-classDiagram-CalypsoCommand-CsmCommands.svg" alt="Class Diagram - Calypso CSM Commands Table">
 </div>
 </div>
 <div class="paragraph">
@@ -2410,16 +2410,19 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_calypso_high_layer_calypso_secure_transaction_api">1.7. Calypso High layer – Calypso Secure Transaction API</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_calypso_high_layer_calypso_secure_transaction_api">2. Calypso High layer – Calypso Secure Transaction API</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The high level Calypso transaction module is defined on top of the PO &amp; CSM commands’ API, its classes and interface will be contained in the package ‘cna.sdk.calypso.transaction’,</p>
 </div>
 <div class="paragraph">
 <p>The aim of this transaction module is to automate security operations linked to a session or a transaction. Through this layer of API, an application doesn’t require to manage directly CSM operations (like proposed by lots of contactless readers which embed CSM slots.</p>
 </div>
-<div class="sect3">
-<h4 id="_po_csm_flows_during_a_calypso_secure_session">1.7.1. PO &amp; CSM flows during a Calypso Secure Session</h4>
+<div class="sect2">
+<h3 id="_po_csm_flows_during_a_calypso_secure_session">2.1. PO &amp; CSM flows during a Calypso Secure Session</h3>
 <div class="paragraph">
 <p>A plain secure session with a Calypso PO involves the management of two SE readers in order to communicate in parallel with both a Calypso PO and a CSM.</p>
 </div>
@@ -2442,8 +2445,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_posecuresession">1.7.2. Class: PoSecureSession</h4>
+<div class="sect2">
+<h3 id="_class_posecuresession">2.2. Class: PoSecureSession</h3>
 <div class="paragraph">
 <p>A non-encrypted secure session with a Calypso PO requires the management of two ProxyReader in order to communicate with both a Calypso PO and a CSM.</p>
 </div>
@@ -2583,8 +2586,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 <p><span class="red">Possible improvement: addition of a csmSendableInSessions parameter for the methods processOpening &amp; processProceeding</span></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_secure_transaction_modes">1.7.3. Secure transaction modes</h4>
+<div class="sect2">
+<h3 id="_secure_transaction_modes">2.3. Secure transaction modes</h3>
 <div class="paragraph">
 <p>Without CSM request for a specific computation (without usage of processCsmCommands), the PoSecureSession API allows to operate a Calypso Secure Session in 2 to 4 steps:</p>
 </div>
@@ -2607,12 +2610,11 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_proxyreader_flows_for_a_3_steps_secure_transaction">1.7.4. ProxyReader flows for a 3 steps secure transaction</h4>
+<div class="sect2">
+<h3 id="_proxyreader_flows_for_a_3_steps_secure_transaction">2.4. ProxyReader flows for a 3 steps secure transaction</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/build/uml-sequenceDiagram-CalypsoTransaction-3stepsecureSession.svg" alt="Sequence Diagram - 3 steps PoSecureTransaction">
-</div>
 </div>
 </div>
 </div>
