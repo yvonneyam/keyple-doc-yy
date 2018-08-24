@@ -442,29 +442,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_commands_sets_low_layer_processing">1. Commands' Sets - (Low layer processing)</a>
 <ul class="sectlevel2">
-<li><a href="#_generic_calypso_command_builder_response_parser">1.1. generic Calypso Command Builder &amp; Response Parser</a></li>
-<li><a href="#_calypso_commands_sets_base">1.2. Calypso commands’ sets' base</a>
+<li><a href="#_organization">1.1. Organization</a></li>
+<li><a href="#_calypso_portable_object_commands_set">1.2. Calypso Portable Object command&#8217;s set</a>
 <ul class="sectlevel3">
-<li><a href="#_enumeration_calypsocommands">1.2.1. Enumeration: CalypsoCommands</a></li>
-<li><a href="#_enumeration_commandtype">1.2.2. Enumeration: CommandType</a></li>
+<li><a href="#_calypso_po_commands_table">1.2.1. Calypso PO commands table</a></li>
+<li><a href="#_enumeration_calypsopocommands">1.2.2. Enumeration: CalypsoPoCommands</a></li>
 <li><a href="#_enumeration_porevision">1.2.3. Enumeration: PoRevision</a></li>
 <li><a href="#_abstract_class_pocommandbuilder">1.2.4. abstract Class: PoCommandBuilder</a></li>
-<li><a href="#_enumeration_csmrevision">1.2.5. Enumeration: CsmRevision</a></li>
-<li><a href="#_abstract_class_csmcommandbuilder">1.2.6. abstract Class: CsmCommandBuilder</a></li>
-<li><a href="#_class_inconsistentcommandexception">1.2.7. Class: InconsistentCommandException</a></li>
-<li><a href="#_interface_or_abstract_class_sendableinsession">1.2.8. Interface (or abstract Class): SendableInSession</a></li>
+<li><a href="#_calypso_po_commands_builders">1.2.5. Calypso PO commands' builders</a></li>
+<li><a href="#_calypso_po_responses_parsers">1.2.6. Calypso PO responses' parsers</a></li>
 </ul>
 </li>
-<li><a href="#_calypso_portable_object_commands_set">1.3. Calypso Portable Object command&#8217;s set</a>
+<li><a href="#_calypso_secure_module_commands_set">1.3. Calypso Secure Module command&#8217;s set</a>
 <ul class="sectlevel3">
-<li><a href="#_calypso_po_commands_builders">1.3.1. Calypso PO commands' builders</a></li>
-<li><a href="#_calypso_po_responses_parsers">1.3.2. Calypso PO responses' parsers</a></li>
-</ul>
-</li>
-<li><a href="#_calypso_secure_module_commands_set">1.4. Calypso Secure Module command&#8217;s set</a>
-<ul class="sectlevel3">
-<li><a href="#_csm_commands_builders">1.4.1. CSM commands' builders</a></li>
-<li><a href="#_csm_responses_parsers">1.4.2. CSM responses' parsers</a></li>
+<li><a href="#_csm_commands_table">1.3.1. CSM commands table</a></li>
+<li><a href="#_enumeration_calypsosmcommands">1.3.2. Enumeration: CalypsoSmCommands</a></li>
+<li><a href="#_enumeration_csmrevision">1.3.3. Enumeration: CsmRevision</a></li>
+<li><a href="#_abstract_class_csmcommandbuilder">1.3.4. abstract Class: CsmCommandBuilder</a></li>
+<li><a href="#_csm_commands_builders">1.3.5. CSM commands' builders</a></li>
+<li><a href="#_csm_responses_parsers">1.3.6. CSM responses' parsers</a></li>
 </ul>
 </li>
 </ul>
@@ -485,7 +481,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_commands_sets_low_layer_processing">1. Commands' Sets - (Low layer processing)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_generic_calypso_command_builder_response_parser">1.1. generic Calypso Command Builder &amp; Response Parser</h3>
+<h3 id="_organization">1.1. Organization</h3>
 <div class="paragraph">
 <p>PO &amp; CSM APDU request builder classes have to extend ApduCommandBuilder:</p>
 </div>
@@ -512,30 +508,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Generic classes and interfaces necessary to manage APDU Command Builders &amp; Response Parser are contained in the ‘org.eclipse.keyple.command’ package.</p>
-</div>
-<div class="paragraph">
-<p>Calypso Commands' Sets are defined in the ‘org.eclipse.keyple.calypso.command’ sub-package:</p>
-</div>
-<div class="paragraph">
-<p><strong>An application could manage additional Commands by providing another implementation of the CommandsTable Interface.</strong></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_calypso_commands_sets_base">1.2. Calypso commands’ sets' base</h3>
-<div class="paragraph">
-<p>All these elements are located in the package 'org.eclipse.keyple.calypso.command'.</p>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="./img/uml-classDiagram-CalypsoCommand-CalypsoTable.svg" alt="Class Diagram - Calypso Commands Tables">
 </div>
 </div>
-<div class="sect3">
-<h4 id="_enumeration_calypsocommands">1.2.1. Enumeration: CalypsoCommands</h4>
 <div class="paragraph">
-<p>This enumeration registers all the Calypso PO &amp; CSM commands managed by the SDK, it implements the CommandsTable Interface. It has to be <strong>extended for all PO &amp; CSM command builder classes</strong>.
+<p>The classes and interfaces necessary to manage APDU Command Builders &amp; Response Parser are contained in the ‘org.eclipse.keyple.command’ package.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_calypso_portable_object_commands_set">1.2. Calypso Portable Object command&#8217;s set</h3>
+<div class="paragraph">
+<p>The Calypso PO commands are defined in the package 'org.eclipse.keyple.calypso.command.po'.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/uml-classDiagram-CalypsoCommand-PoCommands.svg" alt="Class Diagram - Calypso PO Commands Table">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Builders of PO command are included in the sub-package 'org.eclipse.keyple.calypso.command.po.builder', related classes extend AsbstractPoCommandBuilder.</p>
+</li>
+<li>
+<p>Parsers of PO response are located in the sub-package 'org.eclipse.keyple.calypso.command.po.parser', related classes extend AbstractApduResponseParser.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_calypso_po_commands_table">1.2.1. Calypso PO commands table</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_enumeration_calypsopocommands">1.2.2. Enumeration: CalypsoPoCommands</h4>
+<div class="paragraph">
+<p>This enumeration registers all the Calypso PO commands managed by the library, the enumeration implements the CommandsTable Interface.
 It provides the generic getters to retrieve: the name of the command, the built ApduRequest and, the corresponding ApduResponseParser class.</p>
 </div>
 <div class="ulist">
@@ -557,162 +566,51 @@ It provides the generic getters to retrieve: the name of the command, the built 
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top"><strong>‘type’</strong></th>
 <th class="tableblock halign-left valign-top"><strong>‘name’</strong></th>
 <th class="tableblock halign-left valign-top"><strong>‘ins’</strong></th>
 <th class="tableblock halign-left valign-top"><strong>‘cmdBuilderClass’</strong></th>
 <th class="tableblock halign-left valign-top"><strong>‘respParserClass’</strong></th>
+<th class="tableblock halign-left valign-top">PO_GET_DATA_FCI</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO_GET_DATA_FCI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">“Get Data ‘FCI’”</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0xCA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GetDataFciCmdBuild</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PoFciRespPars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PO_OPEN_SESSION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Open Secure Session”</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO_OPEN_SESSION</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Open Secure Session”</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x8A</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OpenSessionCmdBuild</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OpenSessionRespPars</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PO_CLOSESESSION</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">“Close Secure Session”</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0x8E</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CloseSessionCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CloseSessionRespPars</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CloseSessionCmdBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CloseSessionRespPars</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PO_READ_RECORDS</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">“Read Records”</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0xB2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ReadRecordsCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ReadRecordsRespPars</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ReadRecordsRespPars</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PO_UPDATE_RECORD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">“Update Record”</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0xDC</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UpdateRecordCmdBuild</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UpdateRecordRespPars</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO_GET_CHALLENGE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PO</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Get Challenge”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x84</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PoGetChallengeCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PoGetChallengeRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_SELECT_DIVERSIFIER</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Select Diversifier”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x14</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SelectDiversifierCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SelectDiversifierRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_GET_CHALLENGE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Get Challenge”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x84</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CsmGetChallengeCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CsmGetChallengeRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_INIT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Init”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x8A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestInitCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestInitRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_UPDATE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Update”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x8C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_UPDATE_MULTIPLE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Update Multiple”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x8C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_CLOSE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Close”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x8E</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestCloseCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestCloseRespPars</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_AUTHENTICATE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Authenticate”</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0x82</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestAuthenticateCmdBuild</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DigestAuthenticateRespPars</p></td>
-</tr>
 </tbody>
 </table>
-<div class="ulist">
-<ul>
-<li>
-<p>Method: CommandType getType()</p>
-<div class="ulist">
-<ul>
-<li>
-<p>returns the command type.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_enumeration_commandtype">1.2.2. Enumeration: CommandType</h4>
 <div class="paragraph">
-<p>This enumeration registers the different Calypso revisions supported by PO, it is used to build a PO Commands in a mode specific to a PO revision.</p>
+<p><strong>An application could manage additional Commands by providing another implementation of the CommandsTable Interface.</strong></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Literals:</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">PO</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSM</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect3">
 <h4 id="_enumeration_porevision">1.2.3. Enumeration: PoRevision</h4>
@@ -786,103 +684,9 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_enumeration_csmrevision">1.2.5. Enumeration: CsmRevision</h4>
-<div class="paragraph">
-<p>This enumeration registers the different mode of CSM. Currently the specific CSM feature identified is the support of ISO 7816-4 commands’ (C1 &amp; S1E SAM with commands in CLA 80h), or proprietary commands (S1D SAM with commands in CLA 94h).</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Literals:</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">C1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S1D</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_abstract_class_csmcommandbuilder">1.2.6. abstract Class: CsmCommandBuilder</h4>
-<div class="paragraph">
-<p>This <strong>abstract</strong> class <strong>extends</strong> ApduCommandBuilder, it has to be <strong>extended by all CSM command builder classes</strong>, it manages the current default revision for PO commands.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>static</strong> Attribute: CsmRevision defaultRevision</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the current default revision for CsmCommandBuilder.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>abstract</strong> Method: CsmCommandBuilder(CalypsoCommands reference, ApduRequest request)</p>
-<div class="ulist">
-<ul>
-<li>
-<p>the generic abstract constructor to build an CSM request with a Calypso command’s reference and a byte array.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_class_inconsistentcommandexception">1.2.7. Class: InconsistentCommandException</h4>
-<div class="paragraph">
-<p>Extends the Exception class of the environment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_interface_or_abstract_class_sendableinsession">1.2.8. Interface (or abstract Class): SendableInSession</h4>
-<div class="paragraph">
-<p>This object could be defined as an interface in Java, or as an abstract class in C++.</p>
-</div>
-<div class="paragraph">
-<p>This interface (or abstract class) has to be <strong>implemented (extended) by the builders of all PO commands, which can be sent inside a secure session.</strong></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_calypso_portable_object_commands_set">1.3. Calypso Portable Object command&#8217;s set</h3>
-<div class="paragraph">
-<p>All the related elements are located in the package 'org.eclipse.keyple.calypso.command.po'.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/uml-classDiagram-CalypsoCommand-PoCommands.svg" alt="Class Diagram - Calypso PO Commands Table">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Builders of PO command are included in the sub-package 'org.eclipse.keyple.calypso.command.po.builder', related classes extend AsbstractPoCommandBuilder.</p>
-</li>
-<li>
-<p>Parsers of PO response are located in the sub-package 'org.eclipse.keyple.calypso.command.po.parser', related classes extend AbstractApduResponseParser.</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="_calypso_po_commands_builders">1.3.1. Calypso PO commands' builders</h4>
+<h4 id="_calypso_po_commands_builders">1.2.5. Calypso PO commands' builders</h4>
 <div class="sect4">
-<h5 id="_class_getdatafcicmdbuild">1.3.1.1. Class: GetDataFciCmdBuild</h5>
+<h5 id="_class_getdatafcicmdbuild">1.2.5.1. Class: GetDataFciCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder and <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the Get Data for ‘FCI’ APDU command.</p>
 </div>
@@ -961,7 +765,7 @@ Calypso command’s reference and a byte array.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_class_pogetchallengecmdbuild">1.3.1.2. Class: PoGetChallengeCmdBuild</h5>
+<h5 id="_class_pogetchallengecmdbuild">1.2.5.2. Class: PoGetChallengeCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the PO Get Challenge.</p>
 </div>
@@ -994,7 +798,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_opensessioncmdbuild">1.3.1.3. Class: OpenSessionCmdBuild</h5>
+<h5 id="_class_opensessioncmdbuild">1.2.5.3. Class: OpenSessionCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder, it provides the dedicated constructor to build the Open Secure Session APDU command.</p>
 </div>
@@ -1027,7 +831,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_closesessioncmdbuild">1.3.1.4. Class: CloseSessionCmdBuild</h5>
+<h5 id="_class_closesessioncmdbuild">1.2.5.4. Class: CloseSessionCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder, it provides the dedicated constructor to build the Close Secure Session APDU command.</p>
 </div>
@@ -1063,7 +867,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_readrecordscmdbuild">1.3.1.5. Class: ReadRecordsCmdBuild</h5>
+<h5 id="_class_readrecordscmdbuild">1.2.5.5. Class: ReadRecordsCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder and <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the Read Records APDU command.</p>
 </div>
@@ -1099,7 +903,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_updaterecordcmdbuild">1.3.1.6. Class: UpdateRecordCmdBuild</h5>
+<h5 id="_class_updaterecordcmdbuild">1.2.5.6. Class: UpdateRecordCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder and <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the Update Record APDU command.</p>
 </div>
@@ -1136,7 +940,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_calypso_po_responses_parsers">1.3.2. Calypso PO responses' parsers</h4>
+<h4 id="_calypso_po_responses_parsers">1.2.6. Calypso PO responses' parsers</h4>
 <div class="paragraph">
 <p>All these classes <strong>extend ApduResponseParser</strong> and are located in the package 'org.eclipse.keyple.calypso.command.po.parser'.</p>
 </div>
@@ -1154,7 +958,7 @@ Calypso command’s reference and a byte array.</p>
 </tbody>
 </table>
 <div class="sect4">
-<h5 id="_class_getdatafciresppars">1.3.2.1. Class: GetDataFciRespPars</h5>
+<h5 id="_class_getdatafciresppars">1.2.6.1. Class: GetDataFciRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of FCI data from response of a Get Data ‘FCI’ response or a Select Application response.</p>
 </div>
@@ -1385,7 +1189,7 @@ Calypso command’s reference and a byte array.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_class_pogetchallengeresppars">1.3.2.2. Class: PoGetChallengeRespPars</h5>
+<h5 id="_class_pogetchallengeresppars">1.2.6.2. Class: PoGetChallengeRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of a Get Challenge response.</p>
 </div>
@@ -1394,7 +1198,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_opensessionresppars">1.3.2.3. Class: OpenSessionRespPars</h5>
+<h5 id="_class_opensessionresppars">1.2.6.3. Class: OpenSessionRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of an Open Secure Session response.</p>
 </div>
@@ -1715,7 +1519,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_closesessionresppars">1.3.2.4. Class: CloseSessionRespPars</h5>
+<h5 id="_class_closesessionresppars">1.2.6.4. Class: CloseSessionRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of a Close Secure Session response.</p>
 </div>
@@ -1810,7 +1614,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_readrecordsresppars">1.3.2.5. Class: ReadRecordsRespPars</h5>
+<h5 id="_class_readrecordsresppars">1.2.6.5. Class: ReadRecordsRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of a Read Records response.</p>
 </div>
@@ -1918,7 +1722,7 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_updaterecordresppars">1.3.2.6. Class: UpdateRecordRespPars</h5>
+<h5 id="_class_updaterecordresppars">1.2.6.6. Class: UpdateRecordRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties of an Update Record response. the Update Record APDU command. No dedicated getter is required, because it’s a ‘case 3’ APDU which
 doesn’t return any data.</p>
@@ -2008,9 +1812,14 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_calypso_secure_module_commands_set">1.4. Calypso Secure Module command&#8217;s set</h3>
+<h3 id="_calypso_secure_module_commands_set">1.3. Calypso Secure Module command&#8217;s set</h3>
 <div class="paragraph">
 <p>All the related elements are located in the package 'org.eclipse.keyple.calypso.command.csm'.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/uml-classDiagram-CalypsoCommand-CsmCommands.svg" alt="Class Diagram - Calypso CSM Commands Table">
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -2022,15 +1831,148 @@ etc.).”</p></td>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/uml-classDiagram-CalypsoCommand-CsmCommands.svg" alt="Class Diagram - Calypso CSM Commands Table">
+<div class="sect3">
+<h4 id="_csm_commands_table">1.3.1. CSM commands table</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_enumeration_calypsosmcommands">1.3.2. Enumeration: CalypsoSmCommands</h4>
+<div class="paragraph">
+<p>This enumeration registers all the CSM commands managed by the library, the enumeration implements the CommandsTable Interface.
+It provides the generic getters to retrieve: the name of the command, the built ApduRequest and, the corresponding ApduResponseParser class.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Structured literals:</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top"><strong>‘name’</strong></th>
+<th class="tableblock halign-left valign-top"><strong>‘ins’</strong></th>
+<th class="tableblock halign-left valign-top"><strong>‘cmdBuilderClass’</strong></th>
+<th class="tableblock halign-left valign-top"><strong>‘respParserClass’</strong></th>
+<th class="tableblock halign-left valign-top">CSM_SELECT_DIVERSIFIER</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Select Diversifier”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SelectDiversifierCmdBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SelectDiversifierRespPars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_GET_CHALLENGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Get Challenge”</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x84</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CsmGetChallengeCmdBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CsmGetChallengeRespPars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_INIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Init”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x8A</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestInitCmdBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestInitRespPars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_UPDATE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Update”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x8C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateCmdBuild</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateRespPars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_UPDATE_MULTIPLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Update Multiple”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x8C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateCmdBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestUpdateRespPars</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_CLOSE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“Digest Close”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0x8E</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestCloseCmdBuild</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DigestCloseRespPars</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSM_DIGEST_AUTHENTICATE</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_enumeration_csmrevision">1.3.3. Enumeration: CsmRevision</h4>
+<div class="paragraph">
+<p>This enumeration registers the different mode of CSM. Currently the specific CSM feature identified is the support of ISO 7816-4 commands’ (C1 &amp; S1E SAM with commands in CLA 80h), or proprietary commands (S1D SAM with commands in CLA 94h).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Literals:</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">C1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S1D</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_abstract_class_csmcommandbuilder">1.3.4. abstract Class: CsmCommandBuilder</h4>
+<div class="paragraph">
+<p>This <strong>abstract</strong> class <strong>extends</strong> ApduCommandBuilder, it has to be <strong>extended by all CSM command builder classes</strong>, it manages the current default revision for PO commands.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>static</strong> Attribute: CsmRevision defaultRevision</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the current default revision for CsmCommandBuilder.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>abstract</strong> Method: CsmCommandBuilder(CalypsoCommands reference, ApduRequest request)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the generic abstract constructor to build an CSM request with a Calypso command’s reference and a byte array.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_csm_commands_builders">1.4.1. CSM commands' builders</h4>
+<h4 id="_csm_commands_builders">1.3.5. CSM commands' builders</h4>
 <div class="sect4">
-<h5 id="_class_selectdiversifiercmdbuild">1.4.1.1. Class: SelectDiversifierCmdBuild</h5>
+<h5 id="_class_selectdiversifiercmdbuild">1.3.5.1. Class: SelectDiversifierCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the CSM Get Challenge APDU command.</p>
 </div>
@@ -2063,7 +2005,7 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_csmgetchallengecmdbuild">1.4.1.2. Class: CsmGetChallengeCmdBuild</h5>
+<h5 id="_class_csmgetchallengecmdbuild">1.3.5.2. Class: CsmGetChallengeCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the CSM Get Challenge APDU command.</p>
 </div>
@@ -2096,7 +2038,7 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestinitcmdbuild">1.4.1.3. Class: DigestInitCmdBuild</h5>
+<h5 id="_class_digestinitcmdbuild">1.3.5.3. Class: DigestInitCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Init APDU command.</p>
 </div>
@@ -2132,7 +2074,7 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestupdatecmdbuild">1.4.1.4. Class: DigestUpdateCmdBuild</h5>
+<h5 id="_class_digestupdatecmdbuild">1.3.5.4. Class: DigestUpdateCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Update APDU command.</p>
 </div>
@@ -2168,7 +2110,7 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestupdatemultiplecmdbuild">1.4.1.5. Class: DigestUpdateMultipleCmdBuild</h5>
+<h5 id="_class_digestupdatemultiplecmdbuild">1.3.5.5. Class: DigestUpdateMultipleCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Update APDU command.</p>
 </div>
@@ -2204,7 +2146,7 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestclosecmdbuild">1.4.1.6. Class: DigestCloseCmdBuild</h5>
+<h5 id="_class_digestclosecmdbuild">1.3.5.6. Class: DigestCloseCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Close APDU command.</p>
 </div>
@@ -2237,7 +2179,7 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestauthenticatecmdbuild">1.4.1.7. Class: DigestAuthenticateCmdBuild</h5>
+<h5 id="_class_digestauthenticatecmdbuild">1.3.5.7. Class: DigestAuthenticateCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Authenticate APDU command.</p>
 </div>
@@ -2271,13 +2213,13 @@ etc.).”</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_csm_responses_parsers">1.4.2. CSM responses' parsers</h4>
+<h4 id="_csm_responses_parsers">1.3.6. CSM responses' parsers</h4>
 <div class="paragraph">
 <p>All these classes <strong>extend ApduResponseParser</strong> and are located in the
 package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 <div class="sect4">
-<h5 id="_class_selectdiversifierresppars">1.4.2.1. Class: SelectDiversifierRespPars</h5>
+<h5 id="_class_selectdiversifierresppars">1.3.6.1. Class: SelectDiversifierRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2290,7 +2232,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_csmgetchallengeresppars">1.4.2.2. Class: CsmGetChallengeRespPars</h5>
+<h5 id="_class_csmgetchallengeresppars">1.3.6.2. Class: CsmGetChallengeRespPars</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2303,7 +2245,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestinitresppars">1.4.2.3. Class: DigestInitRespPars</h5>
+<h5 id="_class_digestinitresppars">1.3.6.3. Class: DigestInitRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2316,7 +2258,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestupdateresppars">1.4.2.4. Class: DigestUpdateRespPars</h5>
+<h5 id="_class_digestupdateresppars">1.3.6.4. Class: DigestUpdateRespPars</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2329,7 +2271,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestupdatemultipleresppars">1.4.2.5. Class: DigestUpdateMultipleRespPars</h5>
+<h5 id="_class_digestupdatemultipleresppars">1.3.6.5. Class: DigestUpdateMultipleRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2342,7 +2284,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestcloseresppars">1.4.2.6. Class: DigestCloseRespPars</h5>
+<h5 id="_class_digestcloseresppars">1.3.6.6. Class: DigestCloseRespPars</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2355,7 +2297,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_class_digestauthenticateresppars">1.4.2.7. Class: DigestAuthenticateRespPars</h5>
+<h5 id="_class_digestauthenticateresppars">1.3.6.7. Class: DigestAuthenticateRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
