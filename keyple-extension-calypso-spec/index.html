@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
 <meta name="author" content="Author Pierre Terree - Calypso Networks Association">
-<title>Keyple 'Calypso Extension' - Commands' sets &amp; Secure transaction processing</title>
+<title>Keyple 'Calypso Extension' - Calypso processing API</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -433,14 +433,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Keyple 'Calypso Extension' - Commands' sets &amp; Secure transaction processing</h1>
+<h1>Keyple 'Calypso Extension' - Calypso processing API</h1>
 <div class="details">
 <span id="author" class="author">Author Pierre Terree - Calypso Networks Association</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_commands_extensions_calypso_processing_api_low_layer">1. Commands Extensions - 'Calypso processing' API (Low layer)</a>
+<li><a href="#_commands_sets_low_layer_processing">1. Commands' Sets - (Low layer processing)</a>
 <ul class="sectlevel2">
 <li><a href="#_generic_calypso_command_builder_response_parser">1.1. generic Calypso Command Builder &amp; Response Parser</a></li>
 <li><a href="#_calypso_commands_sets_base">1.2. Calypso commands’ sets' base</a>
@@ -455,51 +455,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_interface_or_abstract_class_sendableinsession">1.2.8. Interface (or abstract Class): SendableInSession</a></li>
 </ul>
 </li>
-<li><a href="#_calypso_portable_object_commands_set_middle_layer">1.3. Calypso Portable Object command&#8217;s set (Middle Layer)</a>
+<li><a href="#_calypso_portable_object_commands_set">1.3. Calypso Portable Object command&#8217;s set</a>
 <ul class="sectlevel3">
-<li><a href="#_class_getdatafcicmdbuild">1.3.1. Class: GetDataFciCmdBuild</a></li>
-<li><a href="#_class_pogetchallengecmdbuild">1.3.2. Class: PoGetChallengeCmdBuild</a></li>
-<li><a href="#_class_opensessioncmdbuild">1.3.3. Class: OpenSessionCmdBuild</a></li>
-<li><a href="#_class_closesessioncmdbuild">1.3.4. Class: CloseSessionCmdBuild</a></li>
-<li><a href="#_class_readrecordscmdbuild">1.3.5. Class: ReadRecordsCmdBuild</a></li>
-<li><a href="#_class_updaterecordcmdbuild">1.3.6. Class: UpdateRecordCmdBuild</a></li>
+<li><a href="#_calypso_po_commands_builders">1.3.1. Calypso PO commands' builders</a></li>
+<li><a href="#_calypso_po_responses_parsers">1.3.2. Calypso PO responses' parsers</a></li>
 </ul>
 </li>
-<li><a href="#_calypso_middle_layer_portable_object_responses_parsers">1.4. Calypso Middle Layer – Portable Object responses' parsers</a>
+<li><a href="#_calypso_secure_module_commands_set">1.4. Calypso Secure Module command&#8217;s set</a>
 <ul class="sectlevel3">
-<li><a href="#_class_getdatafciresppars">1.4.1. Class: GetDataFciRespPars</a></li>
-<li><a href="#_class_pogetchallengeresppars">1.4.2. Class: PoGetChallengeRespPars</a></li>
-<li><a href="#_class_opensessionresppars">1.4.3. Class: OpenSessionRespPars</a></li>
-<li><a href="#_class_closesessionresppars">1.4.4. Class: CloseSessionRespPars</a></li>
-<li><a href="#_class_readrecordsresppars">1.4.5. Class: ReadRecordsRespPars</a></li>
-<li><a href="#_class_updaterecordresppars">1.4.6. Class: UpdateRecordRespPars</a></li>
-</ul>
-</li>
-<li><a href="#_calypso_secure_module_commands_set_middle_layer">1.5. Calypso Secure Module command&#8217;s set (Middle Layer)</a>
-<ul class="sectlevel3">
-<li><a href="#_class_selectdiversifiercmdbuild">1.5.1. Class: SelectDiversifierCmdBuild</a></li>
-<li><a href="#_class_csmgetchallengecmdbuild">1.5.2. Class: CsmGetChallengeCmdBuild</a></li>
-<li><a href="#_class_digestinitcmdbuild">1.5.3. Class: DigestInitCmdBuild</a></li>
-<li><a href="#_class_digestupdatecmdbuild">1.5.4. Class: DigestUpdateCmdBuild</a></li>
-<li><a href="#_class_digestupdatemultiplecmdbuild">1.5.5. Class: DigestUpdateMultipleCmdBuild</a></li>
-<li><a href="#_class_digestclosecmdbuild">1.5.6. Class: DigestCloseCmdBuild</a></li>
-<li><a href="#_class_digestauthenticatecmdbuild">1.5.7. Class: DigestAuthenticateCmdBuild</a></li>
-</ul>
-</li>
-<li><a href="#_calypso_middle_layer_secure_module_responses_parsers">1.6. Calypso Middle Layer – Secure Module responses' parsers</a>
-<ul class="sectlevel3">
-<li><a href="#_class_selectdiversifierresppars">1.6.1. Class: SelectDiversifierRespPars</a></li>
-<li><a href="#_class_csmgetchallengeresppars">1.6.2. Class: CsmGetChallengeRespPars</a></li>
-<li><a href="#_class_digestinitresppars">1.6.3. Class: DigestInitRespPars</a></li>
-<li><a href="#_class_digestupdateresppars">1.6.4. Class: DigestUpdateRespPars</a></li>
-<li><a href="#_class_digestupdatemultipleresppars">1.6.5. Class: DigestUpdateMultipleRespPars</a></li>
-<li><a href="#_class_digestcloseresppars">1.6.6. Class: DigestCloseRespPars</a></li>
-<li><a href="#_class_digestauthenticateresppars">1.6.7. Class: DigestAuthenticateRespPars</a></li>
+<li><a href="#_csm_commands_builders">1.4.1. CSM commands' builders</a></li>
+<li><a href="#_csm_responses_parsers">1.4.2. CSM responses' parsers</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_calypso_high_layer_calypso_secure_transaction_api">2. Calypso High layer – Calypso Secure Transaction API</a>
+<li><a href="#_secure_transaction_high_layer_processing">2. Secure Transaction - (High layer processing)</a>
 <ul class="sectlevel2">
 <li><a href="#_po_csm_flows_during_a_calypso_secure_session">2.1. PO &amp; CSM flows during a Calypso Secure Session</a></li>
 <li><a href="#_class_posecuresession">2.2. Class: PoSecureSession</a></li>
@@ -512,7 +482,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_commands_extensions_calypso_processing_api_low_layer">1. Commands Extensions - 'Calypso processing' API (Low layer)</h2>
+<h2 id="_commands_sets_low_layer_processing">1. Commands' Sets - (Low layer processing)</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_generic_calypso_command_builder_response_parser">1.1. generic Calypso Command Builder &amp; Response Parser</h3>
@@ -543,29 +513,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </div>
 <div class="paragraph">
-<p>Generic classes and interfaces necessary to manage APDU Command Builders &amp; Response Parser are contained in the ‘cna.sdk.commands’ package.</p>
+<p>Generic classes and interfaces necessary to manage APDU Command Builders &amp; Response Parser are contained in the ‘org.eclipse.keyple.command’ package.</p>
 </div>
 <div class="paragraph">
-<p>Calypso Commands' Sets are defined in the ‘cna.sdk.commands.calypso’ sub-package:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Generic parameters for Calypso PO &amp; CMS commands’ builders &amp; responses’, and their associations are registered in the CalypsoCommands Enumeration.</p>
-</li>
-<li>
-<p>Portable Object’s command’s builders are in the ‘org.keyple.calypso.commands.po.builder’ sub-package,</p>
-</li>
-<li>
-<p>Portable Object’s response’s parsers are in the ‘org.keyple.calypso.commands.po.parser’ sub-package,</p>
-</li>
-<li>
-<p>Secure Module’s command’s builders are in the ‘org.keyple.calypso.commands.csm.builder’ sub-package,</p>
-</li>
-<li>
-<p>and Secure Module’s command’s parsers are in the ‘org.keyple.calypso.commands.csm.parser’ sub-package.</p>
-</li>
-</ul>
+<p>Calypso Commands' Sets are defined in the ‘org.eclipse.keyple.calypso.command’ sub-package:</p>
 </div>
 <div class="paragraph">
 <p><strong>An application could manage additional Commands by providing another implementation of the CommandsTable Interface.</strong></p>
@@ -574,11 +525,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_calypso_commands_sets_base">1.2. Calypso commands’ sets' base</h3>
 <div class="paragraph">
-<p>All these elements are located in the package 'org.keyple.calypso.commands'.</p>
+<p>All these elements are located in the package 'org.eclipse.keyple.calypso.command'.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-classDiagram-CalypsoCommand-CalypsoTable.svg" alt="Class Diagram - Calypso Commands Tables">
+<img src="./img/uml-classDiagram-CalypsoCommand-CalypsoTable.svg" alt="Class Diagram - Calypso Commands Tables">
 </div>
 </div>
 <div class="sect3">
@@ -909,27 +860,29 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_calypso_portable_object_commands_set_middle_layer">1.3. Calypso Portable Object command&#8217;s set (Middle Layer)</h3>
+<h3 id="_calypso_portable_object_commands_set">1.3. Calypso Portable Object command&#8217;s set</h3>
 <div class="paragraph">
-<p>All the related elements are located in the package 'org.keyple.calypso.commands.po'.</p>
+<p>All the related elements are located in the package 'org.eclipse.keyple.calypso.command.po'.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-classDiagram-CalypsoCommand-PoCommands.svg" alt="Class Diagram - Calypso PO Commands Table">
+<img src="./img/uml-classDiagram-CalypsoCommand-PoCommands.svg" alt="Class Diagram - Calypso PO Commands Table">
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Builders of PO command are included in the sub-package 'org.keyple.calypso.commands.po.builder'. Related classes extend AsbstractPoCommandBuilder.</p>
+<p>Builders of PO command are included in the sub-package 'org.eclipse.keyple.calypso.command.po.builder', related classes extend AsbstractPoCommandBuilder.</p>
 </li>
 <li>
-<p>Parsers of PO response are included in the sub-package 'org.keyple.calypso.commands.po.parser'. Related classes extend AbstractApduResponseParser.</p>
+<p>Parsers of PO response are located in the sub-package 'org.eclipse.keyple.calypso.command.po.parser', related classes extend AbstractApduResponseParser.</p>
 </li>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_class_getdatafcicmdbuild">1.3.1. Class: GetDataFciCmdBuild</h4>
+<h4 id="_calypso_po_commands_builders">1.3.1. Calypso PO commands' builders</h4>
+<div class="sect4">
+<h5 id="_class_getdatafcicmdbuild">1.3.1.1. Class: GetDataFciCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder and <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the Get Data for ‘FCI’ APDU command.</p>
 </div>
@@ -1007,8 +960,8 @@ Calypso command’s reference and a byte array.</p>
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_class_pogetchallengecmdbuild">1.3.2. Class: PoGetChallengeCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_pogetchallengecmdbuild">1.3.1.2. Class: PoGetChallengeCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the PO Get Challenge.</p>
 </div>
@@ -1040,8 +993,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_opensessioncmdbuild">1.3.3. Class: OpenSessionCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_opensessioncmdbuild">1.3.1.3. Class: OpenSessionCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder, it provides the dedicated constructor to build the Open Secure Session APDU command.</p>
 </div>
@@ -1073,8 +1026,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_closesessioncmdbuild">1.3.4. Class: CloseSessionCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_closesessioncmdbuild">1.3.1.4. Class: CloseSessionCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder, it provides the dedicated constructor to build the Close Secure Session APDU command.</p>
 </div>
@@ -1109,8 +1062,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_readrecordscmdbuild">1.3.5. Class: ReadRecordsCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_readrecordscmdbuild">1.3.1.5. Class: ReadRecordsCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder and <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the Read Records APDU command.</p>
 </div>
@@ -1145,8 +1098,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_updaterecordcmdbuild">1.3.6. Class: UpdateRecordCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_updaterecordcmdbuild">1.3.1.6. Class: UpdateRecordCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> PoCommandBuilder and <strong>implements</strong> SendableInSession, it provides the dedicated constructor to build the Update Record APDU command.</p>
 </div>
@@ -1182,10 +1135,10 @@ Calypso command’s reference and a byte array.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_calypso_middle_layer_portable_object_responses_parsers">1.4. Calypso Middle Layer – Portable Object responses' parsers</h3>
+<div class="sect3">
+<h4 id="_calypso_po_responses_parsers">1.3.2. Calypso PO responses' parsers</h4>
 <div class="paragraph">
-<p>All these classes <strong>extend ApduResponseParser</strong> and are located in the package 'org.keyple.calypso.commands.po.parser'.</p>
+<p>All these classes <strong>extend ApduResponseParser</strong> and are located in the package 'org.eclipse.keyple.calypso.command.po.parser'.</p>
 </div>
 <div class="paragraph">
 <p>The constructors of all these subclasses may not have additional parameters than the super constructor of ApduResponseParser.</p>
@@ -1200,8 +1153,8 @@ Calypso command’s reference and a byte array.</p>
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="_class_getdatafciresppars">1.4.1. Class: GetDataFciRespPars</h4>
+<div class="sect4">
+<h5 id="_class_getdatafciresppars">1.3.2.1. Class: GetDataFciRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of FCI data from response of a Get Data ‘FCI’ response or a Select Application response.</p>
 </div>
@@ -1431,8 +1384,8 @@ Calypso command’s reference and a byte array.</p>
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_class_pogetchallengeresppars">1.4.2. Class: PoGetChallengeRespPars</h4>
+<div class="sect4">
+<h5 id="_class_pogetchallengeresppars">1.3.2.2. Class: PoGetChallengeRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of a Get Challenge response.</p>
 </div>
@@ -1440,8 +1393,8 @@ Calypso command’s reference and a byte array.</p>
 <p>(To be completed)</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_opensessionresppars">1.4.3. Class: OpenSessionRespPars</h4>
+<div class="sect4">
+<h5 id="_class_opensessionresppars">1.3.2.3. Class: OpenSessionRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of an Open Secure Session response.</p>
 </div>
@@ -1761,8 +1714,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_closesessionresppars">1.4.4. Class: CloseSessionRespPars</h4>
+<div class="sect4">
+<h5 id="_class_closesessionresppars">1.3.2.4. Class: CloseSessionRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of a Close Secure Session response.</p>
 </div>
@@ -1856,8 +1809,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_readrecordsresppars">1.4.5. Class: ReadRecordsRespPars</h4>
+<div class="sect4">
+<h5 id="_class_readrecordsresppars">1.3.2.5. Class: ReadRecordsRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties and the getters to access to the structured fields of a Read Records response.</p>
 </div>
@@ -1964,8 +1917,8 @@ Calypso command’s reference and a byte array.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_updaterecordresppars">1.4.6. Class: UpdateRecordRespPars</h4>
+<div class="sect4">
+<h5 id="_class_updaterecordresppars">1.3.2.6. Class: UpdateRecordRespPars</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> ApduResponseParser, it provides status code properties of an Update Record response. the Update Record APDU command. No dedicated getter is required, because it’s a ‘case 3’ APDU which
 doesn’t return any data.</p>
@@ -2053,26 +2006,31 @@ etc.).”</p></td>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_calypso_secure_module_commands_set_middle_layer">1.5. Calypso Secure Module command&#8217;s set (Middle Layer)</h3>
-<div class="paragraph">
-<p>All the related elements are located in the package 'org.keyple.calypso.commands.csm'.
-* Builders of CSM command are included in the sub-package 'org.keyple.calypso.commands.csm.builder'. Related classes extend AsbstractCsmCommandBuilder.
-* Parsers of CSM response are included in the sub-package 'org.keyple.calypso.commands.csm.parser'. Related classes extend AbstractApduResponseParser.</p>
 </div>
+<div class="sect2">
+<h3 id="_calypso_secure_module_commands_set">1.4. Calypso Secure Module command&#8217;s set</h3>
 <div class="paragraph">
-<p>All these classes <strong>extend CsmCommandBuilder</strong> and are located in the package 'org.keyple.calypso.commands.csm.builder'.</p>
+<p>All the related elements are located in the package 'org.eclipse.keyple.calypso.command.csm'.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Builders of CSM command are included in the sub-package 'org.eclipse.keyple.calypso.command.csm.builder', related classes <strong>extend AsbstractCsmCommandBuilder</strong>.</p>
+</li>
+<li>
+<p>Parsers of CSM response are located in the sub-package 'org.eclipse.keyple.calypso.command.csm.parser', related classes <strong>extend AbstractApduResponseParser</strong>.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-classDiagram-CalypsoCommand-CsmCommands.svg" alt="Class Diagram - Calypso CSM Commands Table">
+<img src="./img/uml-classDiagram-CalypsoCommand-CsmCommands.svg" alt="Class Diagram - Calypso CSM Commands Table">
 </div>
-</div>
-<div class="paragraph">
-<p>//// Calypso Middle Layer – Secure Module commands' builders</p>
 </div>
 <div class="sect3">
-<h4 id="_class_selectdiversifiercmdbuild">1.5.1. Class: SelectDiversifierCmdBuild</h4>
+<h4 id="_csm_commands_builders">1.4.1. CSM commands' builders</h4>
+<div class="sect4">
+<h5 id="_class_selectdiversifiercmdbuild">1.4.1.1. Class: SelectDiversifierCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the CSM Get Challenge APDU command.</p>
 </div>
@@ -2104,8 +2062,8 @@ etc.).”</p></td>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_csmgetchallengecmdbuild">1.5.2. Class: CsmGetChallengeCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_csmgetchallengecmdbuild">1.4.1.2. Class: CsmGetChallengeCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the CSM Get Challenge APDU command.</p>
 </div>
@@ -2137,8 +2095,8 @@ etc.).”</p></td>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestinitcmdbuild">1.5.3. Class: DigestInitCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_digestinitcmdbuild">1.4.1.3. Class: DigestInitCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Init APDU command.</p>
 </div>
@@ -2173,8 +2131,8 @@ etc.).”</p></td>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestupdatecmdbuild">1.5.4. Class: DigestUpdateCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_digestupdatecmdbuild">1.4.1.4. Class: DigestUpdateCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Update APDU command.</p>
 </div>
@@ -2209,8 +2167,8 @@ etc.).”</p></td>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestupdatemultiplecmdbuild">1.5.5. Class: DigestUpdateMultipleCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_digestupdatemultiplecmdbuild">1.4.1.5. Class: DigestUpdateMultipleCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Update APDU command.</p>
 </div>
@@ -2245,8 +2203,8 @@ etc.).”</p></td>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestclosecmdbuild">1.5.6. Class: DigestCloseCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_digestclosecmdbuild">1.4.1.6. Class: DigestCloseCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Close APDU command.</p>
 </div>
@@ -2278,8 +2236,8 @@ etc.).”</p></td>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestauthenticatecmdbuild">1.5.7. Class: DigestAuthenticateCmdBuild</h4>
+<div class="sect4">
+<h5 id="_class_digestauthenticatecmdbuild">1.4.1.7. Class: DigestAuthenticateCmdBuild</h5>
 <div class="paragraph">
 <p>This class <strong>extends</strong> CsmCommandBuilder, it provides the dedicated constructor to build the Digest Authenticate APDU command.</p>
 </div>
@@ -2312,14 +2270,14 @@ etc.).”</p></td>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_calypso_middle_layer_secure_module_responses_parsers">1.6. Calypso Middle Layer – Secure Module responses' parsers</h3>
+<div class="sect3">
+<h4 id="_csm_responses_parsers">1.4.2. CSM responses' parsers</h4>
 <div class="paragraph">
 <p>All these classes <strong>extend ApduResponseParser</strong> and are located in the
-package cna.sdk.commands.calypso.csm.parser.</p>
+package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
-<div class="sect3">
-<h4 id="_class_selectdiversifierresppars">1.6.1. Class: SelectDiversifierRespPars</h4>
+<div class="sect4">
+<h5 id="_class_selectdiversifierresppars">1.4.2.1. Class: SelectDiversifierRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2331,8 +2289,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_csmgetchallengeresppars">1.6.2. Class: CsmGetChallengeRespPars</h4>
+<div class="sect4">
+<h5 id="_class_csmgetchallengeresppars">1.4.2.2. Class: CsmGetChallengeRespPars</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2344,8 +2302,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestinitresppars">1.6.3. Class: DigestInitRespPars</h4>
+<div class="sect4">
+<h5 id="_class_digestinitresppars">1.4.2.3. Class: DigestInitRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2357,8 +2315,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestupdateresppars">1.6.4. Class: DigestUpdateRespPars</h4>
+<div class="sect4">
+<h5 id="_class_digestupdateresppars">1.4.2.4. Class: DigestUpdateRespPars</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2370,8 +2328,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestupdatemultipleresppars">1.6.5. Class: DigestUpdateMultipleRespPars</h4>
+<div class="sect4">
+<h5 id="_class_digestupdatemultipleresppars">1.4.2.5. Class: DigestUpdateMultipleRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2383,8 +2341,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestcloseresppars">1.6.6. Class: DigestCloseRespPars</h4>
+<div class="sect4">
+<h5 id="_class_digestcloseresppars">1.4.2.6. Class: DigestCloseRespPars</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2396,8 +2354,8 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_class_digestauthenticateresppars">1.6.7. Class: DigestAuthenticateRespPars</h4>
+<div class="sect4">
+<h5 id="_class_digestauthenticateresppars">1.4.2.7. Class: DigestAuthenticateRespPars</h5>
 <div class="paragraph">
 <p>(No additional getter)</p>
 </div>
@@ -2412,11 +2370,12 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_calypso_high_layer_calypso_secure_transaction_api">2. Calypso High layer – Calypso Secure Transaction API</h2>
+<h2 id="_secure_transaction_high_layer_processing">2. Secure Transaction - (High layer processing)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The high level Calypso transaction module is defined on top of the PO &amp; CSM commands’ API, its classes and interface will be contained in the package ‘cna.sdk.calypso.transaction’,</p>
+<p>The high level Calypso transaction module is defined on top of the PO &amp; CSM commands’ API, its classes and interface will be contained in the package ‘org.eclipse.keyple.calypso.transaction’,</p>
 </div>
 <div class="paragraph">
 <p>The aim of this transaction module is to automate security operations linked to a session or a transaction. Through this layer of API, an application doesn’t require to manage directly CSM operations (like proposed by lots of contactless readers which embed CSM slots.</p>
@@ -2441,7 +2400,7 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-sequenceDiagram-CalypsoTransaction-ClassicPoSecureSession.svg" alt="Sequence Diagram - Calypso Sesure Session">
+<img src="./img/uml-sequenceDiagram-CalypsoTransaction-ClassicPoSecureSession.svg" alt="Sequence Diagram - Calypso Sesure Session">
 </div>
 </div>
 </div>
@@ -2606,7 +2565,7 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-activityDiagram-CalypsoTransaction-SessionModes.svg" alt="Activity Diagram - PoSecureTransaction Modes">
+<img src="./img/uml-activityDiagram-CalypsoTransaction-SessionModes.svg" alt="Activity Diagram - PoSecureTransaction Modes">
 </div>
 </div>
 </div>
@@ -2614,7 +2573,7 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 <h3 id="_proxyreader_flows_for_a_3_steps_secure_transaction">2.4. ProxyReader flows for a 3 steps secure transaction</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/build/uml-sequenceDiagram-CalypsoTransaction-3stepsecureSession.svg" alt="Sequence Diagram - 3 steps PoSecureTransaction">
+<img src="./img/uml-sequenceDiagram-CalypsoTransaction-3stepsecureSession.svg" alt="Sequence Diagram - 3 steps PoSecureTransaction">
 </div>
 </div>
 </div>
@@ -2623,7 +2582,7 @@ package cna.sdk.commands.calypso.csm.parser.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-02 14:23:10 Paris, Madrid (heure dÆÚtÚ)
+Last updated 2018-08-24 04:01:36 ╬le Maurice
 </div>
 </div>
 </body>
