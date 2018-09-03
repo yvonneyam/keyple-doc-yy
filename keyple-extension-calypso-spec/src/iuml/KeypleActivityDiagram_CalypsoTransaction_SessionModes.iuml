@@ -7,13 +7,10 @@
 @startuml
 start
 :PO status: not selected\nMessages: PO [0] - CSM [0] }
-:**Select PO**;
-:PO status: selected\nMessages: PO [1] - CSM [0] }
-'partition "Secure Session" {
-:**Process Identification**
+:**Select PO** (Data read outside session)
 (step 1);
-:PO status: session initialized\nMessages: PO [1] - CSM [1] }
-if (additional PO commands\ninside the session?) then (no)
+:PO status: selected\nMessages: PO [1] - CSM [0] }
+if (additional PO commands\ninside the session with non anticipated responses?) then (no)
   :**Process Opening & Closing**
   (step 2);
   if (PO logical channel closed?) then (no)
