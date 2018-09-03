@@ -68,16 +68,16 @@ A non-encrypted secure session with a Calypso PO requires the management of two 
 ** Logical channels with PO & CSM could already be established or not.
 ** defaultKeyIndex optionnaly indicates the default CSM key for a PO Secure Session ([red]#this parameter  may evolve to allow wider CSM settings#).
 
-* Method: SeResponse **processOpening** (ApduResponse poFciData, AbstractOpenSessionCmdBuild openCommand, List<PoSendableInSession> poCommandsInsideSession)
+* Method: SeResponse **processOpening** (ApduResponse poFciData, byte keyIndex, byte openingSfiToSelect, byte openingRecordNumberToRead, List<PoSendableInSession> poCommandsInsideSession)
 ** The PO must have been previously selected, so a logical channel with the PO application must be already active.
 ** The PO serial & revision are identified from FCI data.
 ** A first request is sent to the CSM session reader.
 *** In case not logical channel is active with the CSM, a channel is open.
-*** Then a Select Diversifier (with the PO serial) & a Get Challenge are automatically operated. 
-** The CSM challenge is recovered:
+*** Then a Select Diversifier (with the PO serial) & a Get Challenge are automatically operated. The CSM challenge is recovered.
+** The PO Open Session command is built according to the PO revision, the CSM challenge, the keyIndex, and openingSfiToSelect / openingRecordNumberToRead.
 ** Next the PO reader is requested:
 *** for the current selected PO AID, with keepChannelOpen set at true,
-*** and some PO Apdu Requests including at least an Open Session command (defined with the CSM challenge), and optionally some PO command to operate inside the session.
+*** and some PO Apdu Requests including at least the Open Session command and optionally some PO command to operate inside the session.
 ** The session PO keyset reference is identified from the PO Open Session response, the PO challenge is recovered too.
 ** According to the PO responses of Open Session and the PO commands sent inside the session, a "cache" of CSM commands is filled with the corresponding Digest Init & Digest Update commands.
 ** Returns the corresponding PO SeResponse (for openCommand and poCommandsInsideSession).
@@ -99,7 +99,7 @@ A non-encrypted secure session with a Calypso PO requires the management of two 
 ** Next on the PO reader, a SeRequest is transmitted for the current selected AID, with keepChannelOpen set at the reverse value of closeSeChannel, and apduRequests including the new PO commands to send in the session, a Close Session command (defined with the CSM certificate), and optionally a ratificationCommand.
 ** The PO responses of the poCommandsInsideSession are compared with the poAnticipatedResponseInsideSession. The PO signature is identified from the PO Close Session response.
 ** The PO certificate is recovered from the Close Session response. The card signature is identified.
-** Finally, on the CSM session reader, a Digest Authenticate is automatically operated in order to authenticate the PO.
+** Finally, on the CSM session reader, a Digest Authenticate is automatically operated in order to verify the PO signature.
 ** Returns the corresponding PO SeResponse.
 
 * Method: boolean **isSuccessful** ()
