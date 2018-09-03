@@ -2441,7 +2441,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 </div>
 </li>
 <li>
-<p>Method: SeResponse <strong>processOpening</strong> (ApduResponse poFciData, AbstractOpenSessionCmdBuild openCommand, List&lt;PoSendableInSession&gt; poCommandsInsideSession)</p>
+<p>Method: SeResponse <strong>processOpening</strong> (ApduResponse poFciData, byte keyIndex, byte openingSfiToSelect, byte openingRecordNumberToRead, List&lt;PoSendableInSession&gt; poCommandsInsideSession)</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2458,13 +2458,13 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 <p>In case not logical channel is active with the CSM, a channel is open.</p>
 </li>
 <li>
-<p>Then a Select Diversifier (with the PO serial) &amp; a Get Challenge are automatically operated.</p>
+<p>Then a Select Diversifier (with the PO serial) &amp; a Get Challenge are automatically operated. The CSM challenge is recovered.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>The CSM challenge is recovered:</p>
+<p>The PO Open Session command is built according to the PO revision, the CSM challenge, the keyIndex, and openingSfiToSelect / openingRecordNumberToRead.</p>
 </li>
 <li>
 <p>Next the PO reader is requested:</p>
@@ -2474,7 +2474,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 <p>for the current selected PO AID, with keepChannelOpen set at true,</p>
 </li>
 <li>
-<p>and some PO Apdu Requests including at least an Open Session command (defined with the CSM challenge), and optionally some PO command to operate inside the session.</p>
+<p>and some PO Apdu Requests including at least the Open Session command and optionally some PO command to operate inside the session.</p>
 </li>
 </ul>
 </div>
@@ -2546,7 +2546,7 @@ package 'org.eclipse.keyple.calypso.command.csm.parser'.</p>
 <p>The PO certificate is recovered from the Close Session response. The card signature is identified.</p>
 </li>
 <li>
-<p>Finally, on the CSM session reader, a Digest Authenticate is automatically operated in order to authenticate the PO.</p>
+<p>Finally, on the CSM session reader, a Digest Authenticate is automatically operated in order to verify the PO signature.</p>
 </li>
 <li>
 <p>Returns the corresponding PO SeResponse.</p>
