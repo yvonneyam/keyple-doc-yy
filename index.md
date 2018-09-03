@@ -1,4 +1,4 @@
-# 'Eclipse Keyple' project (2018/07/12)
+# 'Eclipse Keyple' project (2018/09/03)
 
 ## Documentations & binaries
 ### Functional specifications:
@@ -7,12 +7,17 @@
  - **'Keyple Calypso Library specification'**: [https://calypsonet.github.io/keyple-doc/keyple-extension-calypso-spec/](https://calypsonet.github.io/keyple-doc/keyple-extension-calypso-spec/)
 
 ### JavaDoc{s}
-- **'Keyple Core module' JavaDoc**: [https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/)
- - **'Keyple Calypso Library JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/)
- - **'Keyple plugin PC/SC JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/)
-- **'Keyple plugin PC "stub" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/)
-- **'Keyple plugin "Android NFC" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-nfc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-nfc/javadoc/)
-- **'Keyple plugin "Android OMAPI" JavaDoc'**: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/)
+- Keyple API
+  - Keyple **'Core module'** JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-core/javadoc/)
+  - Keyple **'Calypso Library'** JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-calypso/javadoc/)
+- Keyple plugins
+  - Keyple **'PC/SC' plugin** JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/pcsc/javadoc/)
+  - Keyple **'Stub' plugin** JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/stub/javadoc/)
+  - Keyple **'Android NFC' plugin** JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-nfc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-nfc/javadoc/)
+  - Keyple **'Android OMAPI' plugin** JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-plugin/android-omapi/javadoc/)
+ - Examples
+   - PC demo JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-example/pc/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-example/pc/javadoc/)
+   - Common demo JavaDoc: [https://calypsonet.github.io/keyple-java/develop/keyple-example/common/javadoc/](https://calypsonet.github.io/keyple-java/develop/keyple-example/common/javadoc/)
  
 ### JARs
 Keyple modules - simple archives:
@@ -40,10 +45,15 @@ Keyple examples - FAT archive:
          - third session : new Hoplink selection, simple two steps secure session, & close of the physical channel.
 
 ## Status & current works 
-- Coming during July 2018
-  - Definition of the Remote SE plugin.
-  - Week #29 : For OMAPI Plugin: management of application not selected through AID.
+- Coming during September 2018
+  - The core API, Calypso library and the 4 available plugins are ready for a review by the Eclipse foundation, first step for the open source publication. The process may start mid of September.  
+  - End of September : a first implemtation of 'Remote SE' plugin will be proposed with a demo application.
 
+- **Week #36**:
+  - PoSecureSession refactoring: PO & CSM opearations grouping in 3 messages both.
+  - Logs refactoring
+  -  SE selection by ATR value: allows to select a specific SE not supporting AID selection.
+  - Stub reader settings to run the Calypso secure session demo without Calypso PO / CSM.
 - **Week #27**:
   - Separation of the factorization library to support Reader Plugin implementations (dedicated package: 'org.eclipse.keyple.seproxy.plugin'), and simplification of the SE Proxy API for Keyple applications. Further the SE Proxy API for Keyple Application will stay static in case of plugin factorization library evolution.
 - **Week #25**:
@@ -60,3 +70,4 @@ org.eclipse.keyple.seproxy.AbstractLocalReader (to factorize as possible the Apd
 - **Week #22**:
   - Finished a wide refactoring of the SE Proxy layer to requests for multi-SE.
   - Two PC Java examples are fully ready for the PC/SC plugin: KeypleGenericDemo_ObservableReaderNotification &  KeypleGenericDemo_SeProtocolDetection.
+
