@@ -29,7 +29,7 @@ TA<--KC: SeResponse(PO_FCI, List<PoResponse>))
 
 == PO Secure Session ==
 
-TA->KC: **processIdentification**(PO_FCI)
+TA->KC: **processOpening**(PO_FCI, OpenSessionRequest,\nList<PoRequestInSession>)
 KC-[#00FF00]>SMR: CSM 1: SeRequest(noAID,\nList<ApduRequest>)
 SMR->SM: SelectDiversifier
 SMR<<--SM: ack
@@ -37,8 +37,6 @@ SMR->SM: GetChallenge
 SMR<<--SM: CSM challenge
 KC<<[#00FF00]--SMR: SeResponse(FCI, List<ApduResponse>)
 TA<<--KC: SessionStatus_Identified
-
-TA->KC: **processOpening**(OpenSessionRequest,\nList<PoRequestInSession>)
 POR<[#0000FF]-KC: PO 2: SeRequest(AID, List<ApduRequest>)
 PO<-POR: OpenSession
 PO-->>POR: PO challenge
@@ -47,6 +45,11 @@ PO<-POR: ApduRequest
 PO-->>POR: ApduResponse
 end
 POR--[#0000FF]>KC: SeResponse(FCI, List<ApduResponse>)
+
+TA<<--KC: SessionState_Open, List<PoResponse>
+
+TA->KC: **processClosing**(List<PoRequestInSession>,\nList<AnticipatedPoResponse>,\nPoRatificationCommand)
+
 KC-[#00FF00]>SMR: CSM 2: SeRequest(noAID,\nList<ApduRequest>)
 SMR->SM: DigestInit
 SMR<<--SM:ack
@@ -56,11 +59,6 @@ SMR<<--SM: ack
 SMR->SM: DigestUpdate
 SMR<<--SM: ack
 end
-KC<<[#00FF00]--SMR: SeResponse(FCI,\nList<ApduResponse>)
-TA<<--KC: SessionState_Open, List<PoResponse>
-
-TA->KC: **processClosing**(List<PoRequestInSession>,\nList<AnticipatedPoResponse>,\nPoRatificationCommand)
-KC-[#00FF00]>SMR: CSM 3: SeRequest(noAID,\nList<ApduRequest>)
 group '2 * z' session MAC updates
 SMR->SM: DigestUpdate
 SMR<<--SM: ack
@@ -80,7 +78,7 @@ PO-->>POR: PO certificate
 PO<-POR: Ratification
 PO-->>POR: ack
 POR--[#0000FF]>KC: SeResponse(FCI, List<ApduResponse>)
-KC-[#00FF00]>SMR: CSM 4: SeRequest(noAID, List<ApduRequest>)
+KC-[#00FF00]>SMR: CSM 3: SeRequest(noAID, List<ApduRequest>)
 SMR->SM: ExternalAuthenticate
 SMR<<--SM: authentication status
 KC<<[#00FF00]--SMR: Authentification status
