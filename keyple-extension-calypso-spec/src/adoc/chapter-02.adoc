@@ -97,6 +97,8 @@ A non-encrypted secure session with a Calypso PO requires the management of two 
 ** On the CSM session reader, a SeRequest is transmitted with CSM commands of the cache. The CSM cache is emptied.
 ** The CSM certificate is recovered from the Digest Close response. The terminal signature is identified.
 ** Next on the PO reader, a SeRequest is transmitted for the current selected AID, with keepChannelOpen set at the reverse value of closeSeChannel, and apduRequests including the new PO commands to send in the session, a Close Session command (defined with the CSM certificate), and optionally a ratificationCommand.
+*** If a PO ratification command is present, the PO Close Secure Session command is defined to set the PO as non ratified.
+*** Otherwise, the PO Close Secure Session command is defined to directly set the PO as ratified.
 ** The PO responses of the poCommandsInsideSession are compared with the poAnticipatedResponseInsideSession. The PO signature is identified from the PO Close Session response.
 ** The PO certificate is recovered from the Close Session response. The card signature is identified.
 ** Finally, on the CSM session reader, a Digest Authenticate is automatically operated in order to verify the PO signature.
