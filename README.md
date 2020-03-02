@@ -1,6 +1,6 @@
 # Keyple website maintenance guide 
 
-The Keyple website is generated with [Hugo](https://gohugo.io/) open-source static site generator.
+The Keyple website is generated with [Hugo](https://gohugo.io/), the open-source static site generator.
 
 It uses the [Docsy](https://www.docsy.dev/) theme.
 
@@ -11,7 +11,7 @@ It is recommended that you work from the command line in a Linux or Windows cons
 
 Follow the instructions given here : https://www.docsy.dev/docs/getting-started/
 
-Make sure you choose the extended version and install the additional modules ```PostCSS``` and ```autoprefixer```.
+Make sure you choose the extended version of **Hugo** and install the additional modules ```PostCSS``` and ```autoprefixer```.
 
 #### Clone the website source from the ```website-master``` branch to a local folder.
 ```
