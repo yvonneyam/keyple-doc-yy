@@ -16,6 +16,7 @@ Make sure you choose the extended version of **Hugo** and install the additional
 #### Clone the website source from the ```website-master``` branch to a local folder.
 ```
 git clone -b website-master https://github.com/calypsonet/keyple-doc.git
+cd keyple-doc
 git submodule update --init --recursive
 ```
 *Note: a decent version of git is required (capable of handling sub-modules).*
