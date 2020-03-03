@@ -13,8 +13,6 @@ Follow the instructions given here : https://www.docsy.dev/docs/getting-started/
 
 Make sure you choose the extended version of **Hugo** and install the additional modules ```PostCSS``` and ```autoprefixer``` locally to the current folder (```npm install postcss-cli``` and ```npm install autoprefixer```).
 
-Node.js id 
-
 #### Clone the website source from the ```website-master``` branch to a local folder.
 ```
 git clone -b website-master https://github.com/calypsonet/keyple-doc.git
