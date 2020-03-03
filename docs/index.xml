@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eclipse Keyple – Documentation</title>
-    <link>https://calypsonet.github.io/keyple-website/docs/</link>
+    <link>https://calypsonet.github.io/keyple-doc/docs/</link>
     <description>Recent content in Documentation on Eclipse Keyple</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://calypsonet.github.io/keyple-website/docs/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://calypsonet.github.io/keyple-doc/docs/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Keyple ‘Core’ – User guide (high level API)</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/core/keyplecore_userguide/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/api-reference/core/keyplecore_userguide/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/core/keyplecore_userguide/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/api-reference/core/keyplecore_userguide/</guid>
       <description>
         
         
@@ -228,10 +228,10 @@ cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/exa
     
     <item>
       <title>Docs: Keyple ‘Calypso’ – User guide (high level API)</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/keyplecalypso_userguide/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/api-reference/calypso/keyplecalypso_userguide/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/keyplecalypso_userguide/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/api-reference/calypso/keyplecalypso_userguide/</guid>
       <description>
         
         
@@ -327,10 +327,10 @@ A ‘PO resource’ is the set of a Calypso PO and the reader on which it is sel
     
     <item>
       <title>Docs: Keyple Calypso – Evolution 0.9</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/calypso-evo-0.9/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/api-reference/calypso/calypso-evo-0.9/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/calypso-evo-0.9/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/api-reference/calypso/calypso-evo-0.9/</guid>
       <description>
         
         
@@ -535,10 +535,10 @@ The selection modes by AID or ATR are exclusive. The ATR mode targets POs that d
     
     <item>
       <title>Docs: Bed and Chair Metrics</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tasks/beds/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tasks/beds/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tasks/beds/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tasks/beds/</guid>
       <description>
         
         
@@ -836,10 +836,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Configuring Ponycopters</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tasks/ponycopters/configuring-ponycopters/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tasks/ponycopters/configuring-ponycopters/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tasks/ponycopters/configuring-ponycopters/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tasks/ponycopters/configuring-ponycopters/</guid>
       <description>
         
         
@@ -1137,10 +1137,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Keyple ‘Remote SE’ – User guide (high level API)</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/remotese/keypleremotese_userguide/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/api-reference/remotese/keypleremotese_userguide/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/remotese/keypleremotese_userguide/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/api-reference/remotese/keypleremotese_userguide/</guid>
       <description>
         
         
@@ -1280,10 +1280,10 @@ public void update(final Object o) {
     
     <item>
       <title>Docs: Launching Ponycopters</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tasks/ponycopters/launching-ponycopters/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tasks/ponycopters/launching-ponycopters/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tasks/ponycopters/launching-ponycopters/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tasks/ponycopters/launching-ponycopters/</guid>
       <description>
         
         
@@ -1581,10 +1581,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Multi-Bear Domicile Setup</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tutorials/multi-bear/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tutorials/multi-bear/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tutorials/multi-bear/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tutorials/multi-bear/</guid>
       <description>
         
         
@@ -1882,10 +1882,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Porridge Assessment</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tasks/porridge/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tasks/porridge/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tasks/porridge/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tasks/porridge/</guid>
       <description>
         
         
@@ -2183,10 +2183,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Another Task</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tasks/task/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tasks/task/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tasks/task/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tasks/task/</guid>
       <description>
         
         
@@ -2484,10 +2484,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Another Tutorial</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/tutorials/tutorial2/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/tutorials/tutorial2/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/tutorials/tutorial2/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/tutorials/tutorial2/</guid>
       <description>
         
         
@@ -2785,10 +2785,10 @@ This is a warning with a title.
     
     <item>
       <title>Docs: Example Page</title>
-      <link>https://calypsonet.github.io/keyple-website/docs/getting-started/example-page/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/getting-started/example-page/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-website/docs/getting-started/example-page/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/getting-started/example-page/</guid>
       <description>
         
         
