@@ -35,7 +35,7 @@ Web server is available at http://localhost:1313/keyple-website/ (bind address 1
 ## Modifying the site and debugging the rendering
 
 * The site parameters (URLs, home page layout, etc) are defined in the file ```config.toml```.
-* The pages of the site are contained in ```.md``` in the ```content``` folder.
+* The pages of the site are contained in ```.md``` files in the ```content``` folder.
 
 For details of the Hugo/Docsy layout possibilities refer to https://www.docsy.dev/docs/adding-content/.
 
