@@ -1,4 +1,4 @@
-baseURL = "https://calypsonet.github.io/keyple-website/"
+baseURL = "https://calypsonet.github.io/keyple-doc/"
 title = "Eclipse Keyple"
 
 enableRobotsTXT = true
