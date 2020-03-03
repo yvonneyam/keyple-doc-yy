@@ -1,0 +1,324 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eclipse Keyple – Keyple Calypso API</title>
+    <link>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/</link>
+    <description>Recent content in Keyple Calypso API on Eclipse Keyple</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Keyple ‘Calypso’ – User guide (high level API)</title>
+      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/keyplecalypso_userguide/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/keyplecalypso_userguide/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;#packages--features&#34;&gt;1  Packages &amp;amp; features&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#calypso-selection&#34;&gt;2  Calypso Selection&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#calypso-secure-transaction&#34;&gt;3  Calypso secure transaction&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&#34;packages--features&#34;&gt;Packages &amp;amp; features&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;Keyple Calypso User API is an extension of the Keyple Core User API&lt;/strong&gt; to manage Calypso Portable Object securely using Calypso SAM:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The generic Secure Element selection is enhanced for the &lt;strong&gt;selection of a Calypso PO&lt;/strong&gt;. The FCI response is automatically analyzed in order to identify the revision and the features supported by the Calypso PO. The invalidation status is also checked.&lt;/li&gt;
+&lt;li&gt;The selected Calypso PO object allows to automatically initialize a &lt;strong&gt;Calypso PO transaction&lt;/strong&gt;: high level functional commands could be prepared and processed in order to &lt;strong&gt;read or write data in the PO file structure&lt;/strong&gt;, outside or securely inside a &lt;strong&gt;Calypso secure session&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&#34;2&#34;&gt;&lt;b&gt;Features&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;b&gt;Packages&lt;/b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&#34;2&#34; width=&#34;15%&#34;&gt;Calypso PO operations&lt;/td&gt;
+    &lt;td width=&#34;50%&#34;&gt;Selection of Calypso SE: PO or SAM
+PO transaction:
+ &lt;li&gt;Read / update of data&lt;/li&gt;
+ &lt;li&gt;PO authentication&lt;/li&gt;&lt;/td&gt;
+    &lt;td width=&#34;35%&#34;&gt;org.eclipse.keyple.calypso.&lt;b&gt;transaction&lt;b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Calypso PO responses data parsing&lt;/td&gt;
+    &lt;td&gt;org.eclipse.keyple.calypso.&lt;b&gt;command.po.parser&lt;b&gt;&lt;/td&gt;
+  &lt;/tr&gt;  
+&lt;/table&gt;
+&lt;h2 id=&#34;calypso-selection&#34;&gt;Calypso Selection&lt;/h2&gt;
+&lt;p&gt;The Calypso API to select a Portable object is an extension of the generic Secure Element selection Core API:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A PO AID selection could be defined to &lt;strong&gt;accept or reject invalidated PO&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;A request for a SE selection is defined with SE selector containing at least an AID (to operate through a Select Application APDU command) or an ATR filter. A request for a PO selection could be enhanced to operate after the PO selector processing some APDU commands with the PO : &lt;strong&gt;Select File or Read Records commands&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;In case of successful Calypso PO, the matching SE is retuned as a Calypso PO. The Calypso API analyzes the startup information of a Calypso PO in order to identify the kind of product, its revision, the optional features supported, the file structure used. Then for coming PO commands, the setting of the technical parameters automatically managed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The PO command grouped with the PO selection have to be “prepared” before the processing of a default or explicit SE selection.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase1_ExplicitSelectionAid/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase1/ExplicitSelectionAid_Pcsc.java&#34;&gt;“Calypso Use Case 1 / Explicit AID Selection”&lt;/a&gt; example&lt;br&gt;
+cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase2_DefaultSelectionNotification/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase2/DefaultSelectionNotification_Pcsc.java&#34;&gt;“Calypso Use Case 2 / Default Selection Notification”&lt;/a&gt; example&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCalypso-1-Transaction-PO_Selection.png&#34; alt=&#34;Calypso - PO Selection scheme&#34; title=&#34;Calypso - PO Selection&#34;&gt;
+A ‘PO resource’ is the set of a Calypso PO and the reader on which it is selected.&lt;/p&gt;
+&lt;p&gt;In a same way the Calypso APO provides the tool to select a Calypso security module (a SAM). A SAM selector doesn’t support AID. The corresponding matching SE is a Calypso SAM. A Calypso SAM and the reader used for its selection defines a ‘SAM resource’.&lt;/p&gt;
+&lt;h2 id=&#34;calypso-secure-transaction&#34;&gt;Calypso secure transaction&lt;/h2&gt;
+&lt;p&gt;A PO transaction could be operated on a Calypso resource. In case a SAM resource is set, a PO transaction could support the Calypso secure session in order to manage a mutual authentication between the terminal and the Calypso PO.&lt;/p&gt;
+&lt;p&gt;Through the PO transaction API, only the APDU commands for the PO are explicitly defined; the APDU commands for the SAM are automatically built by the library. Two kinds of methods are provided by the API: ‘&lt;strong&gt;prepare&lt;/strong&gt;’ methods, and ‘&lt;strong&gt;process&lt;/strong&gt;’ methods.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The ‘prepare’ methods allows to define PO file selection and PO data access operations (read or update of records for a specific file, append of record for a cyclic file, increase or decrease of the value of a counter).&lt;/li&gt;
+&lt;li&gt;A ‘process” method sends to the PO at least the previously prepared command.
+&lt;ul&gt;
+&lt;li&gt;The process PO commands method could operated only if no secure session is currently open with the PO. If one or several PO commands have been prepared, a single request is done to the PO reader.&lt;/li&gt;
+&lt;li&gt;The process opening method allows to manage the opening of a secure session.
+&lt;ul&gt;
+&lt;li&gt;First a single request is operated to the SAM reader in order to set the PO serial as the cryptographic diversifier, and to get the terminal challenge for the session.&lt;/li&gt;
+&lt;li&gt;Then another single request is done to the PO reader to play the prepared PO command, and to manage the opening of the PO session.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;A process PO command in session method could be processed only if a secure session is already open with PO.
+&lt;ul&gt;
+&lt;li&gt;A single request Is operated with the PO reader to operate the prepared PO commands.&lt;/li&gt;
+&lt;li&gt;Another single request is sent to the SAM reader to update the update the digest of the MAC session.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The process closing method is used to manage the closing of the secure session with the PO.
+&lt;ul&gt;
+&lt;li&gt;A first SAM request is operated to update the digest of the last prepared PO commands and to get the terminal session certificate (to save a PO request, the API anticipates the responses of the prepared PO commands).&lt;/li&gt;
+&lt;li&gt;A single PO request is transmitted to run the last prepared PO command, to recover the PO session certificate, and to send the ratification signal if necessary.&lt;/li&gt;
+&lt;li&gt;Finally, a second SAM request allows to authenticate the PO. If the transaction is successful the mutual authentication is valid, and the PO has atomically committed the requested data updates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The minimal costs of a Calypso secure session are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3 PO requests (1 for the PO selection + 1 for the PO session opening + 1 for the PO session closing).&lt;/li&gt;
+&lt;li&gt;And 3 SAM requests if the SAM is already selected (1 for the PO session opening + 2 for the PO session closing); otherwise 4 SAM requests if the SAM isn’t already selected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCalypso-2-Transaction-PO_Session.png&#34; alt=&#34;Calypso - PO Transaction scheme&#34; title=&#34;Calypso - PO Transaction&#34;&gt;&lt;/p&gt;
+&lt;p&gt;By default, the PO transaction manages the Calypso secure session as ‘atomic’: the cumulative amount of PO updates command can’t exceed the size of the PO session buffer.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase4_PoAuthentication/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase4/PoAuthentication_Pcsc.java&#34;&gt;“Calypso Use Case 4 / PO Authentication”&lt;/a&gt; example&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The PO transaction could also be defined to allow multiple sessions: in this case the transaction is automatically split in several session as necessary.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/calypso/pc/UseCase5_MultipleSession/src/main/java/org/eclipse/keyple/example/calypso/pc/usecase5/MultipleSession_Pcsc.java&#34;&gt;“Calypso Use Case 5 / PO Multiple Session&amp;rdquo;&lt;/a&gt; example&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Keyple Calypso – Evolution 0.9</title>
+      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/calypso-evo-0.9/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/calypso-evo-0.9/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;the-po-selection-api&#34;&gt;The PO selection API&lt;/h1&gt;
+&lt;p&gt;The role of this API is&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;to detect the presentation of a particular Calypso PO,&lt;/li&gt;
+&lt;li&gt;to select the target application (in the ISO7816-4 sense),&lt;/li&gt;
+&lt;li&gt;to execute additional commands (among a reduced set) following the selection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The data produced by this mechanism is a CalypsoPo object (instance of the generic keyple-core object AbstractMatchingSe).&lt;/p&gt;
+&lt;p&gt;The CalypsoPo object contains the information derived from the FCI analysis received in response to the selection command as well as the data received in response to any additional commands that may have been executed.&lt;/p&gt;
+&lt;p&gt;The Keyple Calypso selection API is an extension of the Keyple Core selection API and consists in the following classes:&lt;/p&gt;
+&lt;h2 id=&#34;poselector&#34;&gt;PoSelector&lt;/h2&gt;
+&lt;p&gt;Defines the elements for selecting a Calypso PO:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Extends SeSelector&lt;/li&gt;
+&lt;li&gt;Provides the PoAidSelector inner class which extends AidSelector with the information needed to process invalidated POs. The AID value is used to select the PO application as defined by ISO7816-4 (at least 5 and up to 16 bytes).&lt;/li&gt;
+&lt;li&gt;Provides the PoAtrFilter inner class which extends AtrFilter without addition.
+The filtering mechanism consists of a regular expression targeting the ATR of the PO. In the contactless mode the notion of ATR does not exist, it is emulated a posteriori by the reader (cf. PC/SC). The actual value of the ATR returned by the reader can thus vary from one reader to another according to the interpretation made by the manufacturer. This makes this value something that will have to be adjusted according to the hardware configuration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The PoSelector acts as a filter to designate the Calypso PO you are targeting. Based on the generic keyple-core selection mechanism it implements filtering by communication protocol (ISO, B Prime) and by AID or ATR.
+Thus, any SE that does not meet the criteria defined by the PoSelector will not be reported to the application.
+The selection modes by AID or ATR are exclusive. The ATR mode targets POs that do not have AID selection capability such as very old PO revision 1.0.&lt;/p&gt;
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;enum&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;InvalidatedPo&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color:#000&#34;&gt;REJECT&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ACCEPT&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;/* Constructor */&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoSelector&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SeProtocol&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;seProtocol&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; 
+                    &lt;span style=&#34;color:#000&#34;&gt;PoAtrFilter&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;poAtrFilter&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; 
+                    &lt;span style=&#34;color:#000&#34;&gt;PoAidSelector&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;poAidSelector&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; 
+                    &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoAidSelector&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;IsoAid&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;aidToSelect&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; 
+                        &lt;span style=&#34;color:#000&#34;&gt;InvalidatedPo&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;invalidatedPo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt;
+                        &lt;span style=&#34;color:#000&#34;&gt;FileOccurrence&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;fileOccurrence&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; 
+                        &lt;span style=&#34;color:#000&#34;&gt;FileControlInformation&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;fileControlInformation&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoAidSelector&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;IsoAid&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;aidToSelect&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;InvalidatedPo&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;invalidatedPo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoAtrFilter&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;atrRegex&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;poselectionrequest&#34;&gt;PoSelectionRequest&lt;/h2&gt;
+&lt;p&gt;This class is used to build the SeRequest that is executed when detecting an SE identified as a Calypso PO using the PoSelector described above.&lt;/p&gt;
+&lt;p&gt;The PoSelectionRequest is provided as a preparation case for the generic SeSelection; several PoSelectionRequests can be prepared to target different POs. Here, attention should be paid to the order in which the selection cases are placed in the generic SeSelection (see the generic selection API).&lt;/p&gt;
+&lt;p&gt;The result of the selection is returned by the means of the generic keyple-core selection (explicit or default modes, ReaderEvent notification).&lt;/p&gt;
+&lt;h3 id=&#34;addtional-commands&#34;&gt;Addtional commands&lt;/h3&gt;
+&lt;p&gt;In addition to the &amp;ldquo;Select Application&amp;rdquo; command, the SeRequest produced by PoSelectionRequest can embed additional commands sent to the PO following the selection.&lt;/p&gt;
+&lt;p&gt;These additional commands are the &amp;ldquo;Select File&amp;rdquo; and &amp;ldquo;Read Records&amp;rdquo; commands; they are included in the selection SeRequest by calls to the &amp;ldquo;prepare&amp;rdquo; commands corresponding to them prior to providing the PoSelectionRequest object to the prepareSelection method of the keyple-core SeSelection class (see Keyple Core API).&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;prepare&amp;rdquo; methods don&amp;rsquo;t return anything. The result of their execution will be reported in the CalypsoPo object when processing the selection SeRequest.&lt;/p&gt;
+&lt;h2 id=&#34;matching-se&#34;&gt;Matching SE&lt;/h2&gt;
+&lt;p&gt;Another role of PoSelectionRequest is to provide the keyple-core selection mechanism with the means to build a CalypsoPo object. This object is returned by the getMatchingSe method of MatchingSelection (keyple-core).&lt;/p&gt;
+&lt;p&gt;For that, PoSelectionRequest implements the protected method &amp;ldquo;parse&amp;rdquo; which allows this specialization in CalypsoPo of the AbstractMatchingSe. The CalypsoPo is created from the parsing of the Select Application response (FCI) when the generic selection is processed.&lt;/p&gt;
+&lt;h3 id=&#34;summary-1&#34;&gt;Summary&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Public methods&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;void&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;prepareSelectFileCmd(byte[] path, String extraInfo)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;void&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;prepareSelectFileCmd(SelectFileCmdBuild.SelectControl selectControl, String extraInfo)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;void&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;prepareReadRecordsCmd(byte sfi, ReadDataStructure readDataStructureEnum, byte firstRecordNumber, int expectedLength, String extraInfo)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;void&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;prepareReadRecordsCmd(byte sfi, ReadDataStructure readDataStructureEnum, byte firstRecordNumber, String extraInfo)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;/* Constructor */&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoSelectionRequest&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PoSelector&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;poSelector&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;prepareSelectFileCmd&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;prepareSelectFileCmd&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SelectFileCmdBuild&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;SelectControl&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;selectControl&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;prepareReadRecordsCmd&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;sfi&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ReadDataStructure&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;readDataStructureEnum&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;firstRecordNumber&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;expectedLength&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;prepareReadRecordsCmd&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;sfi&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ReadDataStructure&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;readDataStructureEnum&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;firstRecordNumber&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;calypsopo&#34;&gt;CalypsoPo&lt;/h2&gt;
+&lt;p&gt;The CalypsoPo object holds all known information about the PO being processed. The object is created at the time the PO is selected and will be progressively updated during the subsequent processing, especially during the operations carried out with PoTransaction.&lt;/p&gt;
+&lt;p&gt;This information includes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Data extracted from the analysis of the selection itself: analysis of the FCI field (or the ATR in the case of Rev 1.0):
+&lt;ul&gt;
+&lt;li&gt;Invalidation status&lt;/li&gt;
+&lt;li&gt;DF Name&lt;/li&gt;
+&lt;li&gt;Serial Number&lt;/li&gt;
+&lt;li&gt;Revision&lt;/li&gt;
+&lt;li&gt;The class byte to be used in APDU commands to this PO&lt;/li&gt;
+&lt;li&gt;Application type, subtype&lt;/li&gt;
+&lt;li&gt;Software issuer, version, revision&lt;/li&gt;
+&lt;li&gt;Availability of optional features: PIN, Stored Value&lt;/li&gt;
+&lt;li&gt;Ratification required flag&lt;/li&gt;
+&lt;li&gt;Mode 3.2&lt;/li&gt;
+&lt;li&gt;Characteristics of the modification buffer: count mode, size&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Data resulting from the execution of additional commands sent in the selection phase or executed later with PoTransaction:
+&lt;ul&gt;
+&lt;li&gt;File selection status&lt;/li&gt;
+&lt;li&gt;File records and counters values: read and written ?&lt;/li&gt;
+&lt;li&gt;PIN presentation status&lt;/li&gt;
+&lt;li&gt;Stored Value logs&lt;/li&gt;
+&lt;li&gt;Secure session status (written values may depend on the secure session state and therefore do not represent the true status of the PO&amp;rsquo;s memory)&lt;/li&gt;
+&lt;li&gt;The status of failed commands, if any&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;java-api&#34;&gt;Java API&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;CalypsoPo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SeResponse&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;selectionResponse&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;TransmissionMode&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;transmissionMode&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoRevision&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getRevision&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getDfName&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getApplicationSerialNumber&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getAtr&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;isModificationsCounterInBytes&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getModificationsCounter&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getBufferSizeIndicator&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getBufferSizeValue&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getPlatformByte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getApplicationTypeByte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;isRev3_2ModeAvailable&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;isRatificationCommandRequired&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;hasCalypsoStoredValue&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;hasCalypsoPin&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getApplicationSubtypeByte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSoftwareIssuerByte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSoftwareVersionByte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSoftwareRevisionByte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;isDfInvalidated&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PoClass&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getPoClass&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt;
+&lt;span style=&#34;color:#f57900&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f57900&#34;&gt;missing:&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;Further&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;PO&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;identification&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;CD&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Light&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;GTML&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;CD21&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;etc&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;PIN&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;presentation&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;status&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;Stored&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Value&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;logs&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;Content&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;of&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;the&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;files&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;of&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;counters&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;the-sam-selection-api&#34;&gt;The SAM selection API&lt;/h1&gt;
+&lt;h2 id=&#34;samselectionrequest&#34;&gt;SamSelectionRequest&lt;/h2&gt;
+&lt;p&gt;The SamSelectionRequest just overrides SeSelectionRequest to provide a way to build a CalypsoSam object during the selection process.&lt;/p&gt;
+&lt;h3 id=&#34;java-api-1&#34;&gt;Java API&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;SamSelectionRequest&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SamSelector&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;samSelector&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;calypsosam&#34;&gt;CalypsoSam&lt;/h2&gt;
+&lt;p&gt;The CalypsoSam object is the result of a selection made with a SamSelectionRequest.&lt;/p&gt;
+&lt;p&gt;All information is extracted from the ATR.&lt;/p&gt;
+&lt;p&gt;Note: in the case of a HSM, the CalypsoSam is built from an ATR reconstituted from the information available at the HSM level.&lt;/p&gt;
+&lt;h3 id=&#34;java-api-2&#34;&gt;Java API&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;CalypsoSam&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;SeResponse&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;selectionResponse&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;TransmissionMode&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;transmissionMode&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;extraInfo&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;SamRevision&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSamRevision&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSerialNumber&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getPlatform&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getApplicationType&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getApplicationSubType&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSoftwareIssuer&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSoftwareVersion&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;byte&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;getSoftwareRevision&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;()&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

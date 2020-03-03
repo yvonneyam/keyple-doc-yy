@@ -1,0 +1,393 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eclipse Keyple – API reference</title>
+    <link>https://calypsonet.github.io/keyple-website/docs/api-reference/</link>
+    <description>Recent content in API reference on Eclipse Keyple</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://calypsonet.github.io/keyple-website/docs/api-reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Keyple ‘Core’ – User guide (high level API)</title>
+      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/core/keyplecore_userguide/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/core/keyplecore_userguide/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This high-level API is convenient for developers implementing smart card processing application for terminal interfaced with smart card readers.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;#packages--features&#34;&gt;1	Packages &amp;amp; features&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#secure-element-transaction-sequence--setting--selection&#34;&gt;2	Secure Element transaction sequence – setting &amp;amp; selection&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#secure-element-proxy-service-api--readers-management&#34;&gt;3	Secure Element Proxy Service API – readers management&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#plugin-setting&#34;&gt;3.1	Plugin setting&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#se-readers-access&#34;&gt;3.2	SE readers’ access&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#support-of-reader-farm-or-HSM&#34;&gt;3.2.1	Support of reader farm or HSM&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#se-presence-check--explicit-selection-transaction&#34;&gt;3.2.2	SE presence check &amp;amp; “explicit selection transaction”&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#plugin--reader-events&#34;&gt;3.3	Plugin &amp;amp; Reader events&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#plugin-observability-activation&#34;&gt;3.3.1	Plugin observability activation&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;#automatic-selection--default-selection-transaction&#34;&gt;3.3.2	Automatic selection &amp;amp; “default selection transaction”&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#reader-notification-modes&#34;&gt;3.3.3	Reader notification modes&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#reader-observability-activation-polling-mode--se-removal-procedure&#34;&gt;3.3.4	Reader observability activation, “polling mode” &amp;amp; “SE removal procedure”&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#secure-element-selection-api&#34;&gt;4	Secure Element Selection API&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#selection-parameters-communication-protocol-atr-aid&#34;&gt;4.1	Selection parameters (Communication protocol, ATR, AID)&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;#selection-transaction&#34;&gt;4.2	Selection transaction&lt;/a&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&#34;packages--features&#34;&gt;Packages &amp;amp; features&lt;/h2&gt;
+&lt;p&gt;The Keyple Core User API is a tool to manage readers, and to select “generic” Secure Elements.&lt;/p&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&#34;2&#34;&gt;&lt;b&gt;Features&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;b&gt;Packages&lt;/b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&#34;3&#34;&gt;SE reader management&lt;/td&gt;
+    &lt;td&gt;Secure Element reader access&lt;/td&gt;
+    &lt;td&gt;org.eclipse.keyple.core.&lt;b&gt;seproxy&lt;b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Notifications of:
+           &lt;li&gt;reader plug/unplug,&lt;/li&gt;
+           &lt;li&gt;SE insertion/remove&lt;/li&gt;
+           Definition of automatic selection request in case of SE insertion on an Observable Reader.&lt;/td&gt;
+    &lt;td&gt;org.eclipse.keyple.core.seproxy.&lt;b&gt;event&lt;b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Communication protocols filters (setting for contactless/contacts SE Reader)&lt;/td&gt;
+    &lt;td&gt;org.eclipse.keyple.core.seproxy.&lt;b&gt;protocol&lt;b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;SE selection&lt;/td&gt;
+    &lt;td&gt;Generic selection of a Secure Element&lt;/td&gt;
+    &lt;td&gt;org.eclipse.keyple.core.&lt;b&gt;selection&lt;b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;secure-element-transaction-sequence--setting--selection&#34;&gt;Secure Element transaction sequence – setting &amp;amp; selection&lt;/h2&gt;
+&lt;p&gt;A Secure Element transaction starts with the setting of plugins in order to choose the reader to communicate with SE.&lt;/p&gt;
+&lt;p&gt;Using a SE reader, depending on its capabilities, there can be two ways to select a SE through it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Either the processing of an “explicit selection”: if a SE is present in the reader, then the terminal directly operates a SE selection request through the reader.&lt;/li&gt;
+&lt;li&gt;Otherwise if the reader is “observable”, the operating of a “default selection”: in this case a default selection request is defined on the reader, the terminal observes the reader, and wait to be notified by the reader about a SE insertion and selection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At the end the terminal gets a selected SE, it can follow by operating APDU commands with the selected SE until the communication channel is kept open.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-0-SE_SelectionScenarii.png&#34; alt=&#34;SE Selection Scenarii scheme&#34; title=&#34;SE Selection Scenarii&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Then a Keyple Core extension could be used to operates APDU commands with the selected SE solution.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Keyple Calypso extension provides a high-level API to defined ticketing processing involving Calypso cards, cf.: &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/master/docs/KeypleCalypso_UserGuide.adoc&#34;&gt;“Keyple Calypso User Guide”&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;secure-element-proxy-service-api--readers-management&#34;&gt;Secure Element Proxy Service API – readers management&lt;/h2&gt;
+&lt;p&gt;Using the Keyple Core, Secure Element Readers (SeReader) are managed through plugins (ReaderPlugin).&lt;/p&gt;
+&lt;p&gt;The active plugins are registered to the SE Proxy Service (the singleton SeProxyService).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each plugin is registered through a unique name to the SE Proxy Service.&lt;/li&gt;
+&lt;li&gt;Each reader of a plugin is also defined with a unique name inside the plugin.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;plugin-setting&#34;&gt;Plugin setting&lt;/h3&gt;
+&lt;p&gt;To secure the usage of the SE Proxy API for the development of terminal applications, the internal implementation of plugins (classes SpecificPluginImpl &amp;amp; SpecificReaderImpl) is hidden.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For a specific plugin, only the plugin &amp;amp; reader interfaces (SpecificPlugin &amp;amp; SpecificReader) and the factory (class SpecificPluginFactory) are public.&lt;/li&gt;
+&lt;li&gt;The factory of a plugin is set to register a specific plugin to the SE Proxy Service.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-1-SE_Proxy-PluginSetting.png&#34; alt=&#34;SE Proxy - Plugin Setting scheme&#34; title=&#34;SE Proxy - Plugin Setting&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Most of plugins of local readers of Keyple are defined as singleton with a unique instance (e.g.: PC/SC, Android NFC, Android OMAPI, most of embedded readers).&lt;/p&gt;
+&lt;p&gt;For the Remote SE plugin defined to manage remote readers, specific plugin instances are created for each communication interfaces.&lt;/p&gt;
+&lt;h3 id=&#34;se-readers-access&#34;&gt;SE readers’ access&lt;/h3&gt;
+&lt;p&gt;The SE Proxy Service allows to get all the list of the active plugins. A specific plugin could also be directly recovered through its name.&lt;/p&gt;
+&lt;p&gt;In the same way, a plugin can provide the list of all the plugged readers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-2-SE_Proxy-ReaderAccess.png&#34; alt=&#34;SE Proxy - Reader Access scheme&#34; title=&#34;SE Proxy - Reader Access&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Depending on the native reader technology, some specific parameters could be defined at the plugin or reader level.&lt;/p&gt;
+&lt;p&gt;For a classic plugin, the number of readers is determinate, all the plugged readers of the plugin are directly available for the SE Proxy Service.&lt;/p&gt;
+&lt;h4 id=&#34;support-of-reader-farm-or-hsm&#34;&gt;Support of reader farm or HSM&lt;/h4&gt;
+&lt;p&gt;For systems based on a centralized security, in order to manage multiple remote terminal in parallel, central servers could requires to interface a huge number (several hundreds or thousands) of SE through a farm of readers or HSM (Hardware Security Module: an electronic board able to emulate multiple SE).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The multitude of embedded SE could be divided in different groups of profiles.&lt;/li&gt;
+&lt;li&gt;An HSM is often shared between several services, so the full set of readers isn&amp;rsquo;t directly available for a service, a service has to request the allocation of a reader from a specific group.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The SE Proxy Service could support reader farm or HSM though plugins managing &amp;ldquo;pool&amp;rdquo; of readers (ReaderPoolPlugin).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;At the initialization, the list of reader is empty. The list is be filled depending on the reader allocations requested.&lt;/li&gt;
+&lt;li&gt;When not more required, a reader could be released from the pool.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All plugins have to implement the interface ReaderPlugin and SeReader. A plugin managing a pool of reader should implement in addition the interface ReaderPoolPlugin.&lt;/p&gt;
+&lt;h4 id=&#34;se-presence-check--explicit-selection-transaction&#34;&gt;SE presence check &amp;amp; “explicit selection transaction”&lt;/h4&gt;
+&lt;p&gt;A SE reader has the capability to check is a SE is present or not.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For SE terminal processing for which the presence of a SE in a reader is &amp;ldquo;static&amp;rsquo; during a transaction, the transaction starts in general with the verification of the SE presence. If the SE is present, the transaction can continue with the selection of the SE. We call this kind of transaction: an &amp;ldquo;explicit selection transaction&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;plugin--reader-events&#34;&gt;Plugin &amp;amp; Reader events&lt;/h3&gt;
+&lt;p&gt;For some SE terminal, the processing is dynamically driven by the insertion/remove of a SE in a reader, or by the plug/unplug of a reader.&lt;/p&gt;
+&lt;p&gt;E.g., in transportation, the ticketing transaction of access control gates is often started when a contactless card is detected in the field of the reader. For that, in Keyple, a SE reader or a plugin has to be observable.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-3-SE_Proxy-ObserverPattern.png&#34; alt=&#34;SE Proxy - Observer Pattern scheme&#34; title=&#34;SE Proxy - Observer Pattern&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A plugin could be optionally observable (by implementing ObservablePlugin).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In this case a terminal application could observe the plugin (by implementing PluginObserver) in order to be notified (PluginEvent) when a new reader is plugged to the plugin, or when a referenced reader is unplugged.&lt;/li&gt;
+&lt;li&gt;To receive the notification of a specific plugin, the plugin observer should first be added to the observer list of the observable plugin.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Depending on the capability of the plugin, a reader could be optionally observable (by implementing ObservableReader).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A terminal application could observe the plugin (by implementing ReaderObserver) in order to be notified (ReaderEvent) when a SE is inserted or removed from a specific.&lt;/li&gt;
+&lt;li&gt;The reader observer should be added to the observer list to receive the notifications the observable reader.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By default, an observable reader notifies only the insertion or the remove of a SE.&lt;/p&gt;
+&lt;h4 id=&#34;plugin-observability-activation&#34;&gt;Plugin observability activation&lt;/h4&gt;
+&lt;p&gt;An observable plugin automatically starts to observe plugin events when at least one plugin observer is registered and stops the listening when the last plugin observer is removed.&lt;/p&gt;
+&lt;h4 id=&#34;automatic-selection--default-selection-transaction&#34;&gt;Automatic selection &amp;amp; “default selection transaction”&lt;/h4&gt;
+&lt;p&gt;On an observable reader, there is in addition the possibility to define a &amp;ldquo;default selection operation&amp;rdquo;: in this case, when a SE is inserted, the observable reader tries automatically to select the inserted SE using the defined default setting.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the inserted SE is successfully selected, then the observable reader notifies that &amp;ldquo;an inserted SE has matched the default selection&amp;rdquo; and provides the corresponding response.&lt;/li&gt;
+&lt;li&gt;Otherwise if the observable reader failed to select the inserted SE, it could just notify that a SE has been inserted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For SE terminal for which the processing is &amp;ldquo;dynamically&amp;rdquo; driven by the presence of a SE in a reader, the transaction starts in general with the detection of the insertion of a SE and its automatic selection. The reader observer is then notified to analyze the response of the selected SE, and to continue the transaction with the SE. We call this kind of transaction: a &amp;ldquo;default selection transaction&amp;rdquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-4-SE_Proxy-SE_Listening.png&#34; alt=&#34;SE Proxy - SE Listening scheme&#34; title=&#34;SE Proxy - SE Listening&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;reader-notification-modes&#34;&gt;Reader notification modes&lt;/h4&gt;
+&lt;p&gt;If no default selection is defined, an observable reader notifies its observers for “SE insertion” (whatever the SE detected) or “SE removed” events.
+A default selection could be defined for the “always” or the &amp;ldquo;matched only” notification mode.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In the always mode, if the inserted matches the default selection, the observers are notified about a “SE matched” event, otherwise an “SE insertion” event is notified.&lt;/li&gt;
+&lt;li&gt;In case of &amp;ldquo;matched only” mode, the observable reader doesn’t notify SE insertion event. The reader observer will be notified only if a default selection succeed on the observable reader; this configuration allows the reader observer to skip the processing of wrong SE insertions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reader-observability-activation-polling-mode--se-removal-procedure&#34;&gt;Reader observability activation, “polling mode” &amp;amp; “SE removal procedure”&lt;/h4&gt;
+&lt;p&gt;For an observable reader, the listening of reader event requires also the registration of at least one reader observer.&lt;/p&gt;
+&lt;p&gt;An observable reader could switch between four internal states: “Wait for start detection”, “Wait for SE insertion”, “Wait for SE processing”, “Wait for SE removal”.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;At the wait for start detection, the observable reader doesn’t notify any event.&lt;/li&gt;
+&lt;li&gt;The start of the SE detection by an observable reader need to be  explicitly requested by an observer by setting a “polling mode” either through a ‘startSeDetection’ or a ‘setDefaultSelectionRequest’ commands. The SE detection could be started for polling mode defined either in “single shot” or “repeating” mode.
+&lt;ul&gt;
+&lt;li&gt;In single shot mode, the observable reader stops the detection after the SE removal (back to the wait for start detection).&lt;/li&gt;
+&lt;li&gt;In repeating mode, after the SE removal, the observable reader restart to detect another SE (back to the wait for SE insertion).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Wait for SE insertion, if a SE is inserted or selected, the registered reader observers are notified by the observable reader according to the defined notification mode. The observable reader switches to the wait for SE processing.&lt;/li&gt;
+&lt;li&gt;During the SE processing by the observers, the observable reader waits that an observer acknowledges the end of the SE processing.&lt;/li&gt;
+&lt;li&gt;There are two waits to ends the processing of an observed SE:
+&lt;ul&gt;
+&lt;li&gt;Either an observer directly could stop the listening of the observable reader (‘stopSeDetection’ command). The observable reader switches to the wait for start detection, and the observers are immediately notified about the SE remove.&lt;/li&gt;
+&lt;li&gt;Otherwise, the observers could wait for a clean remove of the SE from the observable reader; it’s the SE removal sequence:
+&lt;ul&gt;
+&lt;li&gt;When the main reader observer has finished the processing of the SE, it could request the observable reader to wait for the remove of the SE (‘notifySeProcessed’ command).&lt;/li&gt;
+&lt;li&gt;Finally, the reader observers could be notified when the SE is effectively removed.&lt;/li&gt;
+&lt;li&gt;If the SE insertion listening started in the &amp;ldquo;repeating polling mode&amp;rdquo;, then when the SE is removed, the observable reader automatically starts again the listening of a new SE insertion; otherwise a new explicit request to start the SE listening is required to restart the listening.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;secure-element-selection-api&#34;&gt;Secure Element Selection API&lt;/h2&gt;
+&lt;h3 id=&#34;selection-parameters-communication-protocol-atr-aid&#34;&gt;Selection parameters (Communication protocol, ATR, AID)&lt;/h3&gt;
+&lt;p&gt;To select a Secure Element, a SE Selector has to be defined, based on one to three parameters.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A SE selection could be defined for a specific communication protocol.&lt;/li&gt;
+&lt;li&gt;A SE could be filtered for an ATR (Answer To Reset) matching a specific regular expression.&lt;/li&gt;
+&lt;li&gt;A specific application of a SE could be selected by setting its AID (Application IDentifier).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-5-SE_Proxy-SE_Selector.png&#34; alt=&#34;SE Proxy - SE Selector scheme&#34; title=&#34;SE Proxy - SE Selector&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;selection-transaction&#34;&gt;Selection transaction&lt;/h3&gt;
+&lt;p&gt;To operate a transaction with a SE, it should be firstly selected. The aim of the SE selection API is to get a SE resource: a set of a reader with a selected SE.&lt;/p&gt;
+&lt;p&gt;A SE Selection is managed in two steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;first the “preparations” of selection request based on SE selector,&lt;/li&gt;
+&lt;li&gt;next the “processing” of the selection requests.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In order to manage multiple kinds of SE, several selection requests could be prepared with different selectors.&lt;/p&gt;
+&lt;p&gt;Depending on the setting of the reader, the processing of the selection could be operated in two different ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;either in a “explicit” way after the checking of the SE presence,&lt;/li&gt;
+&lt;li&gt;or in a ”default” way for an observable reader detecting the insertion of a SE.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase1_ExplicitSelectionAid/src/main/java/org/eclipse/keyple/example/generic/pc/usecase1/ExplicitSelectionAid_Pcsc.java&#34;&gt;“Generic Use Case 1 / Explicit AID Selection”&lt;/a&gt; example&lt;br&gt;
+cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase2_DefaultSelectionNotification/src/main/java/org/eclipse/keyple/example/generic/pc/usecase2/DefaultSelectionNotification_Pcsc.java&#34;&gt;“Generic Use Case 2 / Default Selection Notification”&lt;/a&gt; example&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleCore-6-SE_Proxy-SE_Selection.png&#34; alt=&#34;SE Proxy - SE Selection scheme&#34; title=&#34;SE Proxy - SE Selection&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In case a SE Selection is prepared with a channel control mode defined as “keep open”, then the different prepared selectors are operated with the presented SE, but the processing of the selection stops when a selector matches the SE.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The result of the SE selection could be a single ‘matching SE’: this SE is kept as selected in the reader. It’s possible to directly operate command with the SE.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But if a SE selection has been defined with a channel control mode at “close after”, in this case all the prepared SE selectors are operated whatever the matching result.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;After each selector processing, if a selector has matched, the logical channel with the SE is closed (the SE is no more selected).&lt;/li&gt;
+&lt;li&gt;If several applications of the presented SE have matched the selectors: the result of the processing of SE selections is a list matching SE, but all of them are deselected. To continue the SE processing, the terminal application has to choose one matching SE, and to select it again but in “keep open” channel control mode.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase3_GroupedMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase3/GroupedMultiSelection_Pcsc.java&#34;&gt;“Generic Use Case 3 / Grouped Multi-Selection”&lt;/a&gt; example&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After the selection of a SE, using a SE resource, the terminal can continue by operating a specific transaction with the corresponding SE.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/example/generic/pc/UseCase4_SequentialMultiSelection/src/main/java/org/eclipse/keyple/example/generic/pc/usecase4/SequentialMultiSelection_Pcsc.java&#34;&gt;“Generic Use Case 4 / Sequential Multi-Selection”&lt;/a&gt; example&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Keyple Calypso API</title>
+      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/calypso/</guid>
+      <description>
+        
+        
+        
+
+&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
+&lt;p&gt;Keyple&amp;rsquo;s Calypso API is designed to provide high-level access to Calypso PO and SAM products.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Keyple ‘Remote SE’ – User guide (high level API)</title>
+      <link>https://calypsonet.github.io/keyple-website/docs/api-reference/remotese/keypleremotese_userguide/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://calypsonet.github.io/keyple-website/docs/api-reference/remotese/keypleremotese_userguide/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;why-do-i-need-remote-se&#34;&gt;Why do I need Remote SE&lt;/h2&gt;
+&lt;p&gt;It is mostly used to host the Ticketing Logic on a remote server. The end user terminal allows the server to connect to its local &lt;strong&gt;SE Reader&lt;/strong&gt; via the Remote Se API, then the server can communicate with the Reader as if it was a local reader.&lt;/p&gt;
+&lt;p&gt;In a Calypso context, it is useful when a SAM reader and a PO reader are not connected to the same terminal. With the Remote Se API, you can open Calypso transaction within a distributed architecture.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-it-work&#34;&gt;How does it work&lt;/h2&gt;
+&lt;p&gt;The architecture is based on a Slave-Master principle. The slave hosts a local SE reader that will be accessed remotely by the Master.&lt;/p&gt;
+&lt;p&gt;The components of the Remote Se Architecture don’t rely on a given transport layer, either Slave and Master can be a client or a server of any protocol (ie : http, websocket).&lt;/p&gt;
+&lt;p&gt;Example of a use case&lt;/p&gt;
+&lt;p&gt;A server (let&amp;rsquo;s identify it &lt;strong&gt;server1&lt;/strong&gt;) needs to communicate with other terminals reader (&lt;strong&gt;client2&lt;/strong&gt;). To give access to it&amp;rsquo;s local reader, &lt;strong&gt;client2&lt;/strong&gt; should open a session to &lt;strong&gt;server1&lt;/strong&gt; via the &lt;code&gt;SlaveAPI#connect()&lt;/code&gt; method. Doing this, &lt;strong&gt;server1&lt;/strong&gt; receives the possibility to communicate with the local reader of &lt;strong&gt;client2&lt;/strong&gt;. In this scenario &lt;strong&gt;server1&lt;/strong&gt; is a Master node and &lt;strong&gt;client2&lt;/strong&gt; is a Slave node.&lt;/p&gt;
+&lt;p&gt;When &lt;strong&gt;client2&lt;/strong&gt; opens successfully a session to &lt;strong&gt;server1&lt;/strong&gt;, a &lt;code&gt;VirtualReader&lt;/code&gt; is created on &lt;strong&gt;server1&lt;/strong&gt; side. This &lt;code&gt;VirtualReader&lt;/code&gt; is viewed as a local reader &lt;strong&gt;server1&lt;/strong&gt;, in fact, the &lt;code&gt;VirtualReader&lt;/code&gt;  acts as a proxy to the &lt;code&gt;SeReader&lt;/code&gt; hosted on &lt;strong&gt;client2&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;keypledto&#34;&gt;KeypleDto&lt;/h2&gt;
+&lt;p&gt;The Remote Se Architecture is based on a RPC architecture. When a Master node invokes a transmit method on a Virtual Reader, this method is called on the corresponding local Reader on the Slave node.&lt;/p&gt;
+&lt;p&gt;The RPC protocol of the Remote Se Architecture is based on Json messages sent back and forth between the Slaves and the Master.&lt;/p&gt;
+&lt;p&gt;Those messages share a common structure called &lt;strong&gt;KeypleDto&lt;/strong&gt; whose definition is specified here after.&lt;/p&gt;
+&lt;p&gt;The definition of the keypleDto follows the Json-RPC 1.0 specification.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;KeypleDto definition
+
+/* Metadata */
+String requesterNodeId; // Requester Node Id 
+String targetNodeId; // Receiver Node Id 
+String sessionId; // Master reader session
+String nativeReaderName; // Native reader name
+String virtualReaderName; // Virtual reader name
+
+/* API call */ 
+String id; // Id of the request
+String action; // API methods to be called (listed in the object RemoteMethodName)
+String body; // Arguments of the API (json-serialized)
+Boolean isRequest; // Is a request or a response
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;user-guide&#34;&gt;User guide&lt;/h2&gt;
+&lt;p&gt;To establish a connection with the master, the slave device must use the &lt;strong&gt;SlaveAPI&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;By passing a local reader to the connectReader, the slave will contact the master resulting in the opening of a virtual session.&lt;/p&gt;
+&lt;p&gt;During this session, a Virtual reader is available on the master side. Every apdu command sent to the Virtual Reader will be transferred to the Local reader and the response sent back to the Virtual reader&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;VirtualReader&lt;/strong&gt; are created by the &lt;strong&gt;RemoteSePlugin&lt;/strong&gt; on Master node when a local reader initiates a connection.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Slave API
+ - connectReader(SeReader localReader) : connect a local reader to the master node 
+ - disconnectReader(String sessionId, String nativeReaderName) : disconnect a connected reader from the master node
+
+Master API
+ - RemoteSePlugin getPlugin() : get the remote se plugin
+
+
+On Master node the main object is the VirtualReader 
+- It can be manipulated as any SeReader
+- Every command is transferred to the local reader
+- It is accessible from the RemoteSe Plugin
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
+&lt;p&gt;To allow the slave and master to exchange KeypleDto, a transport layer should be implemented via simple node-to-node layout. Both SlaveAPI and MasterAPI needs a DtoNode to be functional.&lt;/p&gt;
+&lt;p&gt;DtoNode can be implemented in top of websocket protocol or http webservice protocol. As Slave and Master have the initiative to send keypleDto, it is preferred to provide a 2-way communication protocol.&lt;/p&gt;
+&lt;p&gt;In case of http webservice, a polling mechanism can be implemented so the server can send messages to the client.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleRemoteSe_DtoNode.png&#34; alt=&#34;alt_text&#34; title=&#34;KeypleRemoteSe_DtoNode.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;architecture-overview&#34;&gt;Architecture overview&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;../../img/KeypleRemoteSe_Architecture.png&#34; alt=&#34;alt_text&#34; title=&#34;image_tooltip&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;quickstart-guide&#34;&gt;Quickstart Guide&lt;/h2&gt;
+&lt;h3 id=&#34;configure-master-api-with-a-dtonode&#34;&gt;Configure Master API with a DtoNode&lt;/h3&gt;
+&lt;p&gt;In this quickstart guide, we will use a pre-built transport layer for the Remote Se Architecture.&lt;/p&gt;
+&lt;p&gt;This transport layer is built upon a Webservice protocol with polling. It is available on the remotese example projects under the package ‘transport”.&lt;/p&gt;
+&lt;p&gt;The MasterAPI will be instanciated with the ServerNode of the WsPollingRetrofit Transport.&lt;/p&gt;
+&lt;p&gt;The ServerNode component of this transport is a self contained web server based on the sun jdk 6.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* Configure the server  Dto Node with a unique nodeId */
+ServerNode node = new WsPollingRetrofitFactory(&amp;quot;master1&amp;quot;).getServer()
+/* Start the server */ 
+node.start() 
+/* Create a MasterAPI bound to this DtoNode */
+MasterAPI masterAPI = new MasterAPI(SeProxyService.getInstance(), node);
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;configure-slave-api-with-a-dtonode&#34;&gt;Configure Slave API with a DtoNode&lt;/h3&gt;
+&lt;p&gt;On the other hand, the slave we will instanciate the SlaveAPI with the clientNode of the transport with the Master node id, it will connect to.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* Configure the client Dto Node layer with the master node it will connect to and a unique slave node id*/
+ClientNode node = new WsPollingRetrofitFactory(&amp;quot;master1&amp;quot;).getClient(&amp;quot;client1&amp;quot;)
+/* Establish connection */
+node.connect()
+/* Create the SlaveAPI */
+SlaveAPI slaveAPI = new SlaveAPI(SeProxyService.getInstance(), node, &amp;quot;master1&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;connect-a-local-reader-to-master&#34;&gt;Connect a local Reader to Master&lt;/h3&gt;
+&lt;p&gt;The next step is to connect a SeReader from the slave node by calling the SlaveAPI connectReader method.&lt;/p&gt;
+&lt;p&gt;In this example we will use a StubReader instanciated from the Stub Plugin.&lt;br&gt;
+&lt;br&gt;
+Once the local reader is connected, it can be used by the Master as a Virtual Reader.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* Slave */
+StubPlugin stubPlugin = StubPlugin.getInstance();
+stubPlugin.plugStubReader(&amp;quot;stubClientSlave&amp;quot;, true);
+/* retrieve SeReader Instance */ 
+SeReader localReader = stubPlugin.getReader(&amp;quot;stubClientSlave&amp;quot;);
+/* connect local Reader to Master */ 
+slaveAPI.connectReader(localReader)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;listen-for-reader-events-on-master-side&#34;&gt;Listen for Reader Events on Master side&lt;/h3&gt;
+&lt;p&gt;To get notified of a SeReader connection, you can observe the Remote Se Plugin, &lt;RsePlugin&gt; for events such as : &lt;strong&gt;&lt;em&gt;READER_CONNECTED, READER_DISCONNECTED&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To get notified of a Se inserted into a remote Se Reader, you can observe the corresponding Virtual Reader for events such as : &lt;strong&gt;&lt;em&gt;SE_MATCHED, SE_INSERTED, SE_REMOVED&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* Master */
+
+RsePlugin rsePlugin = masterAPI.getPlugin();
+
+rsePlugin.addObserver(this);
+
+public void update(final Object o) {
+    // Receive a PluginEvent
+    if (o instanceof PluginEvent) {
+        switch (o.getEventType()) {
+            case READER_CONNECTED: break;
+            case READER_DISCONNECTED:break;}
+    }
+    // ReaderEvent
+    else if (o instanceof ReaderEvent) {
+        switch (o.getEventType()) {
+            case SE_MATCHED:break;
+            case SE_INSERTED:break;
+            case SE_REMOVED:break;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;developer-guide&#34;&gt;Developer Guide&lt;/h2&gt;
+&lt;h3 id=&#34;keypledto-type&#34;&gt;KeypleDto type&lt;/h3&gt;
+&lt;p&gt;KeypleDto are RPC messages sent back and forth between Slave nodes and the Master node. They transport a piece of information that can be a Request, a Response, an Error or a Notification. A fifth type is used internally : NoResponse.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Request&lt;/strong&gt; : it transports the remote procedure invocation. It can be a ProxyReader method such as a transmit() or a remoteSe specific method like connectReader. The name of the method is in the “action” field, the “body” wraps the parameters of the method. Each Request is assigned a unique “id” to be easily retrieved.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response&lt;/strong&gt; : it transports the remote procedure response, if it is not an error. It matches a Request and will be sent to the node that originated the Request. The “body” field contains the response object(s).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error&lt;/strong&gt; (Exception) : Same as Response but it transports an error resulting from the Request. The “body” field contains a Java Exception&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notification&lt;/strong&gt; : it transports a notification such as a ReaderEvent. No response is expected from a notification. The ‘id’ field is empty&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NoResponse&lt;/strong&gt; : it should not be sent. This keypleDto is a stop semaphore to notify DtoNode that the received keypleDto do not expect a response back.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;how-reader-events-are-processed-in-remote-se-architecture&#34;&gt;How Reader Events are processed in Remote Se Architecture&lt;/h3&gt;
+&lt;p&gt;When a Reader Event (SE_INSERTED) is thrown by a local reader, if this local reader is connected to a Master, the event is then propagated to the virtual reader on the Master node.&lt;/p&gt;
+&lt;p&gt;When received by the virtual reader, the event is transformed to be seen by the Master Application as an event thrown by the virtual reader. The fields reader name and plugin name are converted to match the Virtual Reader name and the Remote SE Plugin name.&lt;/p&gt;
+&lt;h3 id=&#34;transport-implementation&#34;&gt;Transport implementation&lt;/h3&gt;
+&lt;h4 id=&#34;transportdto-vs-keypledto&#34;&gt;TransportDto vs KeypleDto&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;KeypleDto&lt;/code&gt; is the object that contains the information about the remote invocation, they are built and processed by the plugin, there is no need to modify them.&lt;/p&gt;
+&lt;p&gt;Users needs to implement (and personalize if needed) &lt;code&gt;TransportDto&lt;/code&gt; which is an envelop for a KeypleDto. It allows to enrich a KeypleDto with information on the transport implementation to allow back and forth communication. (for instance a callback url)&lt;/p&gt;
+&lt;h4 id=&#34;dtonode&#34;&gt;DtoNode&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;DtoNode&lt;/code&gt; is a convenient interface, it links a &lt;code&gt;DtoSender&lt;/code&gt; with a &lt;code&gt;DtoHandler&lt;/code&gt; to create a unique point of contact.&lt;/p&gt;
+&lt;h4 id=&#34;dtosender&#34;&gt;DtoSender&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;DtoSender&lt;/code&gt; is the component responsible for sending the TransportDto to the other terminal.&lt;/p&gt;
+&lt;h4 id=&#34;dtohandler&#34;&gt;DtoHandler&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;DtoHandler&lt;/code&gt; interface is implemented by both &lt;code&gt;SlaveAPI&lt;/code&gt; (Slave side) and &lt;code&gt;MasterAPI&lt;/code&gt; (Master side). Both services waits for a KeypleDto, process it, and will return a KeypleDto as a response (if any). You should link a &lt;code&gt;DtoNode&lt;/code&gt; to both &lt;code&gt;SlaveAPI&lt;/code&gt; and &lt;code&gt;MasterAPI&lt;/code&gt; to make them communicate.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
