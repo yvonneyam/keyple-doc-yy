@@ -50,9 +50,7 @@ Just run ```hugo``` (without argument) at the root of the folder.
 
 ### Update the remote branches
 
-Push the source code in ```website-master``` and ```gh-pages``` branches.
-
-For example with the following commands:
+Update the local git repository for example with the following commands:
 ```
 git add .
 ```
@@ -61,6 +59,13 @@ to add the changes made to the list of files to be updated in the repository.
 git commit -m "Comment describing the changes"
 ```
 
-All these operations are executable in a single operation with the ```deploy_keyple_website.sh``` script.
+Push the source code in ```website-master``` and ```gh-pages``` branches.
+
+These operations are executable in a single operation with the ```deploy_keyple_website.sh``` script.
 
 Changes will be visible online a few minutes after the branch update.
+
+In case the deployment script shows an error due to desynchronization between the local repository and the github repository (this case happens when you edited a file directly online on github.com), it is necessary to update the local repository with the command:
+```
+git pull origin website-master
+```
