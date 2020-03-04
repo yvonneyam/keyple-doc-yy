@@ -52,6 +52,15 @@ Just run ```hugo``` (without argument) at the root of the folder.
 
 Push the source code in ```website-master``` and ```gh-pages``` branches.
 
+For example with the following commands:
+```
+git add .
+```
+to add the changes made to the list of files to be updated in the repository.
+```
+git commit -m "Comment describing the changes"
+```
+
 All these operations are executable in a single operation with the ```deploy_keyple_website.sh``` script.
 
 Changes will be visible online a few minutes after the branch update.
