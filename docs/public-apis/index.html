@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.68.3" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+<link rel="alternate" type="application/rss&#43;xml" href="https://calypsonet.github.io/keyple-doc/docs/public-apis/index.xml">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/keyple-doc/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/keyple-doc/favicons/android-192x192.png" sizes="192x192">
+
+<title>API reference | </title><meta property="og:title" content="API reference" />
+<meta property="og:description" content="API reference.
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://calypsonet.github.io/keyple-doc/docs/public-apis/" />
+
+<meta itemprop="name" content="API reference">
+<meta itemprop="description" content="API reference.
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="API reference"/>
+<meta name="twitter:description" content="API reference.
+"/>
+
+
+
+
+
+<link rel="preload" href="/keyple-doc/scss/main.css" as="style">
+<link href="/keyple-doc/scss/main.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+    <title>API reference | </title>
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/keyple-doc/">
+		<span class="navbar-logo"><svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226.43 81.26"><defs><style>.cls-1{font-size:74.75px;font-family:Museo-500,Museo;font-weight:500}.cls-2{letter-spacing:-.01em}.cls-3{fill:#009fe3}.cls-4{fill:#1d1d1b}</style></defs><title>keyple</title><text class="cls-1" transform="translate(0 63.54)"><tspan class="cls-2">k</tspan><tspan x="38.57" y="0">e</tspan><tspan class="cls-3" x="79.84" y="0">y</tspan><tspan class="cls-2" x="120.65" y="0">p</tspan><tspan x="165.13" y="0">l</tspan><tspan class="cls-4" x="185.16" y="0">e</tspan></text></svg></span><span class="text-uppercase font-weight-bold"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/keyple-doc/what-is-keyple/" ><span>What is Eclipse Keyple</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/keyple-doc/use-cases/" ><span>Use cases</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/keyple-doc/blog/" ><span>Blog</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/keyple-doc/support/" ><span>Support</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="/keyple-doc/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+<input type="search" class="form-control td-search-input" placeholder="&#xf002 Search this site…" aria-label="Search this site…" autocomplete="off">
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+<input type="search" class="form-control td-search-input" placeholder="&#xf002 Search this site…" aria-label="Search this site…" autocomplete="off">
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="keyple-docdocs">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/architecture/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Architecture</a>
+  </li>
+  <ul>
+    <li class="collapse " id="keyple-docdocsarchitecture">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/getting-started/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Getting Started</a>
+  </li>
+  <ul>
+    <li class="collapse " id="keyple-docdocsgetting-started">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/public-apis/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">API reference</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="keyple-docdocspublic-apis">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-keyple-docdocspublic-apiscorekeyplecore_userguide" href="/keyple-doc/docs/public-apis/core/keyplecore_userguide/">1. Keyple Core</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/public-apis/calypso/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">2. Keyple Calypso</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="keyple-docdocspublic-apiscalypso">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-keyple-docdocspublic-apiscalypsokeyplecalypso_userguide" href="/keyple-doc/docs/public-apis/calypso/keyplecalypso_userguide/">2.1. Keyple Calypso 0.8</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-keyple-docdocspublic-apiscalypsocalypso-evo-09" href="/keyple-doc/docs/public-apis/calypso/calypso-evo-0.9/">2.2 Keyple Calypso Evo 0.9</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-keyple-docdocspublic-apisremotesekeypleremotese_userguide" href="/keyple-doc/docs/public-apis/remotese/keypleremotese_userguide/">3. Keyple Remote SE</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/download/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Download</a>
+  </li>
+  <ul>
+    <li class="collapse " id="keyple-docdocsdownload">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/keyple-doc/docs/guides/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">User guides and developper guides</a>
+  </li>
+  <ul>
+    <li class="collapse " id="keyple-docdocsguides">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+
+
+<a href="https://github.com/calypsonet/keyple-doc-yy/edit/website-master/content/en/docs/public%20APIs/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/calypsonet/keyple-doc-yy/issues/new?title=API%20reference" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/eclipse/keyple/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+
+
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://calypsonet.github.io/keyple-doc/docs/">Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://calypsonet.github.io/keyple-doc/docs/public-apis/">API reference</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>API reference</h1>
+	<div class="lead">API reference.</div>
+	<p>If your project has an API, configuration, or other reference - anything that users need to look up that’s at an even lower level than a single task - put (or link to it) here. You can serve and link to generated reference docs created using Doxygen,
+Javadoc, or other doc generation tools by putting them in your <code>static/</code> directory. Find out more in <a href="https://docsy.dev/docs/adding-content/content/#adding-static-content">Adding static content</a>. For OpenAPI reference, Docsy also provides a <a href="https://www.docsy.dev/docs/adding-content/shortcodes/#swaggerui">Swagger UI layout and shortcode</a> that renders <a href="https://swagger.io/tools/swagger-ui/">Swagger UI</a> using any OpenAPI YAML or JSON file as source.</p>
+
+        <div class="section-index">
+    
+    
+    
+    
+    <hr class="panel-line">
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="/keyple-doc/docs/public-apis/core/keyplecore_userguide/">Keyple ‘Core’ – User guide (high level API)</a>
+                    </h5>
+                    <p>Terminal application generic API for: reader access, and generic &lsquo;Secure Element&rsquo; selection.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="/keyple-doc/docs/public-apis/calypso/">Keyple Calypso API</a>
+                    </h5>
+                    <p>Keyple&rsquo;s Calypso API.</p>
+                </div>
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="/keyple-doc/docs/public-apis/remotese/keypleremotese_userguide/">Keyple ‘Remote SE’ – User guide (high level API)</a>
+                    </h5>
+                    <p>The Remote SE architecture allows a device to communicate remotely with a <strong>SE Reader</strong> plugged into another device.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    
+</div>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="feedback--answer feedback--answer-yes">Yes</button>
+<button class="feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.
+</p>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified May 7, 2020: <a  href="https://github.com/calypsonet/keyple-doc-yy/commit/e71c50577869552c39f1762faa06fd02d0f7ccb9">Structure update &#43; content (e71c505)</a>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="User mailing list" aria-label="User mailing list">
+    <a class="text-white" target="_blank" href="https://example.org/mail">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+    <a class="text-white" target="_blank" href="https://example.org/twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
+    <a class="text-white" target="_blank" href="https://example.org/stack">
+      <i class="fab fa-stack-overflow"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" href="https://github.com/google/docsy">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" href="https://example.org/slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+    <a class="text-white" target="_blank" href="https://example.org/mail">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2020 Calypso Networks Association https://www.calypsonet-asso.org/ All Rights Reserved</small>
+        
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+<script src="/keyple-doc/js/main.min.28780653bf4f8a8825a9c82e9dbbfd63e1d9470a1ff3cc687069128b4b09480f.js" integrity="sha256-KHgGU79Pioglqcgunbv9Y&#43;HZRwof88xocGkSi0sJSA8=" crossorigin="anonymous"></script>
+
+
+
+  </body>
+</html>
