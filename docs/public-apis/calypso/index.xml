@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Keyple Calypso API</title>
-    <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/</link>
+    <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/</link>
     <description>Recent content in Keyple Calypso API on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Keyple ‘Calypso’ – User guide (high level API)</title>
-      <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/keyplecalypso_userguide/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/keyplecalypso_userguide/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/keyplecalypso_userguide/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/keyplecalypso_userguide/</guid>
       <description>
         
         
@@ -114,10 +114,10 @@ A ‘PO resource’ is the set of a Calypso PO and the reader on which it is sel
     
     <item>
       <title>Docs: Keyple Calypso – Evolution 0.9</title>
-      <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/calypso-evo-0.9/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/calypso-evo-0.9/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/calypso-evo-0.9/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/calypso-evo-0.9/</guid>
       <description>
         
         
