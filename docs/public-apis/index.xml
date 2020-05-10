@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – API reference</title>
-    <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/</link>
+    <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/</link>
     <description>Recent content in API reference on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://calypsonet.github.io/keyple-doc/docs/public-apis/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Keyple ‘Core’ – User guide (high level API)</title>
-      <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/core/keyplecore_userguide/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/core/keyplecore_userguide/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/core/keyplecore_userguide/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/public-apis/core/keyplecore_userguide/</guid>
       <description>
         
         
@@ -228,10 +228,10 @@ cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/exa
     
     <item>
       <title>Docs: Keyple Calypso API</title>
-      <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/calypso/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/public-apis/calypso/</guid>
       <description>
         
         
@@ -248,10 +248,10 @@ cf. &lt;a href=&#34;https://github.com/eclipse/keyple-java/blob/develop/java/exa
     
     <item>
       <title>Docs: Keyple ‘Remote SE’ – User guide (high level API)</title>
-      <link>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/remotese/keypleremotese_userguide/</link>
+      <link>https://calypsonet.github.io/keyple-doc/docs/public-apis/remotese/keypleremotese_userguide/</link>
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc-yy/docs/public-apis/remotese/keypleremotese_userguide/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc/docs/public-apis/remotese/keypleremotese_userguide/</guid>
       <description>
         
         
