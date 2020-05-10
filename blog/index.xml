@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Blog</title>
-    <link>https://calypsonet.github.io/keyple-doc/blog/</link>
+    <link>https://calypsonet.github.io/keyple-doc-yy/blog/</link>
     <description>Recent content in Blog on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://calypsonet.github.io/keyple-doc/blog/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://calypsonet.github.io/keyple-doc-yy/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Blog: New C&#43;&#43; releases</title>
-      <link>https://calypsonet.github.io/keyple-doc/blog/releases/cpp-releases/</link>
+      <link>https://calypsonet.github.io/keyple-doc-yy/blog/releases/cpp-releases/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc/blog/releases/cpp-releases/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc-yy/blog/releases/cpp-releases/</guid>
       <description>
         
         
@@ -47,10 +47,10 @@
     
     <item>
       <title>Blog: New Java releases</title>
-      <link>https://calypsonet.github.io/keyple-doc/blog/releases/java-releases/</link>
+      <link>https://calypsonet.github.io/keyple-doc-yy/blog/releases/java-releases/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc/blog/releases/java-releases/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc-yy/blog/releases/java-releases/</guid>
       <description>
         
         
@@ -79,10 +79,10 @@
     
     <item>
       <title>Blog: First Meet Up Eclipse Keyple</title>
-      <link>https://calypsonet.github.io/keyple-doc/blog/news/post-01/</link>
+      <link>https://calypsonet.github.io/keyple-doc-yy/blog/news/post-01/</link>
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc/blog/news/post-01/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc-yy/blog/news/post-01/</guid>
       <description>
         
         
@@ -98,10 +98,10 @@
     
     <item>
       <title>Blog: The second blog post</title>
-      <link>https://calypsonet.github.io/keyple-doc/blog/news/second-post/</link>
+      <link>https://calypsonet.github.io/keyple-doc-yy/blog/news/second-post/</link>
       <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://calypsonet.github.io/keyple-doc/blog/news/second-post/</guid>
+      <guid>https://calypsonet.github.io/keyple-doc-yy/blog/news/second-post/</guid>
       <description>
         
         
